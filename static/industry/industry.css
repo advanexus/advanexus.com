@@ -171,10 +171,10 @@
 .industry-deck .industry-founder>p{margin-left:auto;white-space:pre-line}
 .industry-deck .industry-founder>a{font-size:12px;color:var(--accent);white-space:nowrap}
 .industry-deck .industry-infrastructure-support{display:flex;align-items:center;gap:20px;margin-top:12px}
-.industry-deck .industry-support-logos{display:flex;align-items:center;gap:22px;padding:8px 14px;background:#fff;border-radius:4px;flex:none}
-.industry-deck .industry-support-logos img{display:block;height:auto;object-fit:contain}
-.industry-deck .industry-support-logos img:first-child{width:50px}
-.industry-deck .industry-support-logos img:last-child{width:132px}
+.industry-deck .industry-support-logos{display:flex;align-items:center;gap:22px;padding:8px 0;background:transparent;flex:none}
+.industry-deck .industry-support-logos img{height:auto;object-fit:contain}
+.industry-deck .industry-support-logos .industry-aws-logo{width:50px}
+.industry-deck .industry-support-logos .industry-mainstream-logo{width:132px}
 .industry-deck .industry-infrastructure-support p{max-width:600px;font-size:12px;line-height:1.5;color:var(--muted);margin:0}
 .industry-deck .industry-cta{display:inline-flex;align-items:center;gap:10px;color:var(--accent);font-size:15px;text-decoration:none;border-bottom:1px solid var(--teal);padding:10px 0}
 .industry-deck .industry-guided-demo-link{margin-top:15px;margin-right:18px;padding:12px 18px;border:1px solid var(--teal);border-radius:6px;background:var(--teal);color:var(--paper);font-weight:600}
