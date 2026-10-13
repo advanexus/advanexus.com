@@ -198,120 +198,120 @@
 .industry-deck dialog .industry-takeaway strong{display:block;font-size:28px;margin-bottom:12px}
 .industry-deck dialog .industry-takeaway p{font-size:14px}
 
-/* Banking story: one connected evidence diagram per slide. */
-.industry-bancs .banking-opening{display:grid;gap:0;max-width:1240px;width:100%;margin-inline:auto}
-.industry-bancs .banking-conversation{display:grid;grid-template-columns:1.12fr 1fr;gap:8%;align-items:start}
-.industry-bancs .banking-question blockquote{font-size:clamp(22px,2.2vw,31px);line-height:1.18;letter-spacing:-.025em;margin-top:10px;max-width:610px}
-.industry-bancs .banking-return{border-left:2px solid var(--teal);padding-left:24px}
-.industry-bancs .banking-return>strong{display:block;color:var(--accent);font-size:24px;line-height:1.2;margin:10px 0 9px}
-.industry-bancs .banking-return p{font-size:15px;color:var(--muted);max-width:460px}
-.industry-bancs .banking-dialogue-path{display:grid;grid-template-columns:1fr 1fr;min-height:52px;align-items:center;color:var(--accent);font-size:11px;letter-spacing:.02em}
-.industry-bancs .banking-dialogue-path>span{position:relative;display:flex;justify-content:center;align-items:center;gap:10px}
-.industry-bancs .banking-dialogue-path i{display:block;font-style:normal;font-size:30px;line-height:1;animation:banking-request 7s ease-in-out infinite;animation-play-state:paused}
-.industry-bancs .banking-response-path i{animation-name:banking-response}
-.industry-bancs .is-active .banking-dialogue-path i{animation-play-state:running}
-.industry-bancs [data-flow-paused=true] .banking-dialogue-path i{animation-play-state:paused}
-.industry-bancs .banking-platform{display:flex;align-items:center;gap:45px;padding:22px 28px;border-block:1px solid var(--teal);background:var(--tint)}
-.industry-bancs .banking-platform-name{flex:none}
-.industry-bancs .banking-platform-name>strong{display:block;font-size:41px;line-height:1.1;letter-spacing:-.05em;color:var(--accent);margin-top:3px}
-.industry-bancs .banking-platform-work{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;width:100%}
-.industry-bancs .banking-platform-work li{font-size:16px;line-height:1.3;border-left:1px solid var(--line);padding-left:16px}
-.industry-bancs .banking-platform-work span{display:block;color:var(--accent);font-size:11px;margin-bottom:6px}
-.industry-bancs .banking-source-bus{height:28px;position:relative}
-.industry-bancs .banking-source-bus:before{content:'';position:absolute;left:50%;top:0;height:28px;border-left:1px solid var(--teal)}
-.industry-bancs .banking-sources{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));position:relative}
-.industry-bancs .banking-sources:before{content:'';position:absolute;left:12.5%;right:12.5%;top:0;border-top:1px solid var(--teal)}
-.industry-bancs .banking-sources li{position:relative;text-align:center;font-size:17px;padding:26px 12px 10px}
-.industry-bancs .banking-sources li:before{content:'';position:absolute;left:50%;top:0;height:16px;border-left:1px solid var(--teal)}
-.industry-bancs .banking-opening-caption{display:flex;justify-content:space-between;align-items:center;gap:20px;border-top:1px solid var(--line);padding-top:14px;margin-top:8px;font-size:12px}
-.industry-bancs .banking-opening-caption button{font-size:11px;text-decoration:underline;text-underline-offset:4px;white-space:nowrap}
+/* Shared industry story: one connected evidence diagram per slide. */
+.industry-deck .banking-opening{display:grid;gap:0;max-width:1240px;width:100%;margin-inline:auto}
+.industry-deck .banking-conversation{display:grid;grid-template-columns:1.12fr 1fr;gap:8%;align-items:start}
+.industry-deck .banking-question blockquote{font-size:clamp(22px,2.2vw,31px);line-height:1.18;letter-spacing:-.025em;margin-top:10px;max-width:610px}
+.industry-deck .banking-return{border-left:2px solid var(--teal);padding-left:24px}
+.industry-deck .banking-return>strong{display:block;color:var(--accent);font-size:24px;line-height:1.2;margin:10px 0 9px}
+.industry-deck .banking-return p{font-size:15px;color:var(--muted);max-width:460px}
+.industry-deck .banking-dialogue-path{display:grid;grid-template-columns:1fr 1fr;min-height:52px;align-items:center;color:var(--accent);font-size:11px;letter-spacing:.02em}
+.industry-deck .banking-dialogue-path>span{position:relative;display:flex;justify-content:center;align-items:center;gap:10px}
+.industry-deck .banking-dialogue-path i{display:block;font-style:normal;font-size:30px;line-height:1;animation:banking-request 7s ease-in-out infinite;animation-play-state:paused}
+.industry-deck .banking-response-path i{animation-name:banking-response}
+.industry-deck .is-active .banking-dialogue-path i{animation-play-state:running}
+.industry-deck [data-flow-paused=true] .banking-dialogue-path i{animation-play-state:paused}
+.industry-deck .banking-platform{display:flex;align-items:center;gap:45px;padding:22px 28px;border-block:1px solid var(--teal);background:var(--tint)}
+.industry-deck .banking-platform-name{flex:none}
+.industry-deck .banking-platform-name>strong{display:block;font-size:41px;line-height:1.1;letter-spacing:-.05em;color:var(--accent);margin-top:3px}
+.industry-deck .banking-platform-work{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;width:100%}
+.industry-deck .banking-platform-work li{font-size:16px;line-height:1.3;border-left:1px solid var(--line);padding-left:16px}
+.industry-deck .banking-platform-work span{display:block;color:var(--accent);font-size:11px;margin-bottom:6px}
+.industry-deck .banking-source-bus{height:28px;position:relative}
+.industry-deck .banking-source-bus:before{content:'';position:absolute;left:50%;top:0;height:28px;border-left:1px solid var(--teal)}
+.industry-deck .banking-sources{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));position:relative}
+.industry-deck .banking-sources:before{content:'';position:absolute;left:12.5%;right:12.5%;top:0;border-top:1px solid var(--teal)}
+.industry-deck .banking-sources li{position:relative;text-align:center;font-size:17px;padding:26px 12px 10px}
+.industry-deck .banking-sources li:before{content:'';position:absolute;left:50%;top:0;height:16px;border-left:1px solid var(--teal)}
+.industry-deck .banking-opening-caption{display:flex;justify-content:space-between;align-items:center;gap:20px;border-top:1px solid var(--line);padding-top:14px;margin-top:8px;font-size:12px}
+.industry-deck .banking-opening-caption button{font-size:11px;text-decoration:underline;text-underline-offset:4px;white-space:nowrap}
 @keyframes banking-request{0%,15%,100%{transform:translateY(-4px);opacity:.55}30%,45%{transform:translateY(4px);opacity:1}60%,85%{transform:translateY(-4px);opacity:.55}}
 @keyframes banking-response{0%,40%,100%{transform:translateY(4px);opacity:.55}60%,80%{transform:translateY(-4px);opacity:1}}
-.industry-bancs .banking-case{display:grid;gap:22px}
-.industry-bancs .banking-scope{font-size:13px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:12px}
-.industry-bancs .banking-population{display:grid;grid-template-columns:1fr 1fr 1fr;gap:42px}
-.industry-bancs .banking-population-item{position:relative;padding:0 0 2px}
-.industry-bancs .banking-population-item:not(:last-child):after{content:'−';position:absolute;right:-31px;top:34px;font-size:34px;font-weight:300;color:var(--muted)}
-.industry-bancs .banking-population-item:nth-child(2):after{content:'='}
-.industry-bancs .banking-population-item>strong{display:block;font-size:clamp(48px,5vw,72px);letter-spacing:-.065em;line-height:1.05;margin:10px 0 9px;font-variant-numeric:tabular-nums}
-.industry-bancs .banking-population-item>p{font-size:15px;color:var(--muted)}
-.industry-bancs .banking-population-item.is-exception>strong{color:var(--amber)}
-.industry-bancs .banking-mapping{display:flex;align-items:center;gap:18px;border-block:1px solid var(--line);padding:17px 0}
-.industry-bancs .banking-mapping-mark{display:grid;place-items:center;width:36px;height:36px;border:1px solid var(--amber);border-radius:50%;font-size:23px;color:var(--amber);flex:none}
-.industry-bancs .banking-mapping p{font-size:20px;line-height:1.35;margin-top:6px}
-.industry-bancs .banking-gate{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:42px}
-.industry-bancs .banking-gate>li{display:flex;align-items:start;gap:13px;position:relative}
-.industry-bancs .banking-gate>li:not(:last-child):after{content:'→';position:absolute;right:-30px;top:3px;font-size:22px;color:var(--muted)}
-.industry-bancs .banking-gate-symbol{display:grid;place-items:center;width:32px;height:32px;border:1px solid currentColor;border-radius:50%;flex:none;color:var(--accent);font-size:19px}
-.industry-bancs .banking-gate .is-failed .banking-gate-symbol{color:var(--amber)}
-.industry-bancs .banking-gate .is-waiting .banking-gate-symbol{color:var(--muted);font-size:14px}
-.industry-bancs .banking-gate h3{font-size:19px;line-height:1.25;margin:4px 0 7px}
-.industry-bancs .banking-gate p{font-size:14px;color:var(--muted)}
-.industry-bancs .banking-case-limit{font-size:12px;color:var(--muted)}
-.industry-bancs .banking-answer{display:grid;grid-template-columns:1.04fr 1fr;gap:65px;align-items:start}
-.industry-bancs .banking-answer-conversation{border-top:1px solid var(--teal);padding-top:16px}
-.industry-bancs .banking-answer-conversation blockquote{font-size:clamp(24px,2.3vw,33px);line-height:1.2;letter-spacing:-.03em;margin:10px 0 19px}
-.industry-bancs .banking-answer-result{padding-left:20px;border-left:3px solid var(--teal)}
-.industry-bancs .banking-answer-result>p{font-size:16px;line-height:1.45;margin:9px 0 15px}
-.industry-bancs .banking-answer-result>.label{color:var(--accent)}
-.industry-bancs .banking-guide-inline{display:inline-flex;gap:10px;font-size:13px;color:var(--accent);margin-top:7px;text-decoration:none;border-bottom:1px solid var(--teal);padding-bottom:6px}
-.industry-bancs .banking-role-tree>p{margin-bottom:16px}
-.industry-bancs .banking-role-tree ol{position:relative;border-left:1px solid var(--teal);margin-left:7px}
-.industry-bancs .banking-role-tree li{position:relative;padding:0 0 14px 28px}
-.industry-bancs .banking-role-tree li:last-child{padding-bottom:0}
-.industry-bancs .banking-role-tree li:before{content:'';position:absolute;left:0;top:10px;width:20px;border-top:1px solid var(--teal)}
-.industry-bancs .banking-role-node{position:absolute;left:-4px;top:7px;width:7px;height:7px;border-radius:50%;background:var(--teal)}
-.industry-bancs .banking-role-tree h3{font-size:20px;line-height:1.2;margin-bottom:5px}
-.industry-bancs .banking-role-tree li p{font-size:14px;line-height:1.4;color:var(--muted)}
-.industry-bancs .banking-feedback{display:flex;align-items:center;gap:19px;border-top:1px solid var(--teal);padding-top:15px}
-.industry-bancs .banking-feedback>span{font-size:34px;color:var(--accent);flex:none}
-.industry-bancs .banking-feedback strong{font-size:17px;color:var(--accent)}
-.industry-bancs .banking-feedback p{font-size:14px;color:var(--muted);margin-top:4px}
-@media(prefers-reduced-motion:reduce){.industry-bancs .banking-dialogue-path i{animation:none;transform:none;opacity:1}}
+.industry-deck .banking-case{display:grid;gap:22px}
+.industry-deck .banking-scope{font-size:13px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:12px}
+.industry-deck .banking-population{display:grid;grid-template-columns:1fr 1fr 1fr;gap:42px}
+.industry-deck .banking-population-item{position:relative;padding:0 0 2px}
+.industry-deck .banking-population-item:not(:last-child):after{content:'−';position:absolute;right:-31px;top:34px;font-size:34px;font-weight:300;color:var(--muted)}
+.industry-deck .banking-population-item:nth-child(2):after{content:'='}
+.industry-deck .banking-population-item>strong{display:block;font-size:clamp(48px,5vw,72px);letter-spacing:-.065em;line-height:1.05;margin:10px 0 9px;font-variant-numeric:tabular-nums}
+.industry-deck .banking-population-item>p{font-size:15px;color:var(--muted)}
+.industry-deck .banking-population-item.is-exception>strong{color:var(--amber)}
+.industry-deck .banking-mapping{display:flex;align-items:center;gap:18px;border-block:1px solid var(--line);padding:17px 0}
+.industry-deck .banking-mapping-mark{display:grid;place-items:center;width:36px;height:36px;border:1px solid var(--amber);border-radius:50%;font-size:23px;color:var(--amber);flex:none}
+.industry-deck .banking-mapping p{font-size:20px;line-height:1.35;margin-top:6px}
+.industry-deck .banking-gate{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:42px}
+.industry-deck .banking-gate>li{display:flex;align-items:start;gap:13px;position:relative}
+.industry-deck .banking-gate>li:not(:last-child):after{content:'→';position:absolute;right:-30px;top:3px;font-size:22px;color:var(--muted)}
+.industry-deck .banking-gate-symbol{display:grid;place-items:center;width:32px;height:32px;border:1px solid currentColor;border-radius:50%;flex:none;color:var(--accent);font-size:19px}
+.industry-deck .banking-gate .is-failed .banking-gate-symbol{color:var(--amber)}
+.industry-deck .banking-gate .is-waiting .banking-gate-symbol{color:var(--muted);font-size:14px}
+.industry-deck .banking-gate h3{font-size:19px;line-height:1.25;margin:4px 0 7px}
+.industry-deck .banking-gate p{font-size:14px;color:var(--muted)}
+.industry-deck .banking-case-limit{font-size:12px;color:var(--muted)}
+.industry-deck .banking-answer{display:grid;grid-template-columns:1.04fr 1fr;gap:65px;align-items:start}
+.industry-deck .banking-answer-conversation{border-top:1px solid var(--teal);padding-top:16px}
+.industry-deck .banking-answer-conversation blockquote{font-size:clamp(24px,2.3vw,33px);line-height:1.2;letter-spacing:-.03em;margin:10px 0 19px}
+.industry-deck .banking-answer-result{padding-left:20px;border-left:3px solid var(--teal)}
+.industry-deck .banking-answer-result>p{font-size:16px;line-height:1.45;margin:9px 0 15px}
+.industry-deck .banking-answer-result>.label{color:var(--accent)}
+.industry-deck .banking-guide-inline{display:inline-flex;gap:10px;font-size:13px;color:var(--accent);margin-top:7px;text-decoration:none;border-bottom:1px solid var(--teal);padding-bottom:6px}
+.industry-deck .banking-role-tree>p{margin-bottom:16px}
+.industry-deck .banking-role-tree ol{position:relative;border-left:1px solid var(--teal);margin-left:7px}
+.industry-deck .banking-role-tree li{position:relative;padding:0 0 14px 28px}
+.industry-deck .banking-role-tree li:last-child{padding-bottom:0}
+.industry-deck .banking-role-tree li:before{content:'';position:absolute;left:0;top:10px;width:20px;border-top:1px solid var(--teal)}
+.industry-deck .banking-role-node{position:absolute;left:-4px;top:7px;width:7px;height:7px;border-radius:50%;background:var(--teal)}
+.industry-deck .banking-role-tree h3{font-size:20px;line-height:1.2;margin-bottom:5px}
+.industry-deck .banking-role-tree li p{font-size:14px;line-height:1.4;color:var(--muted)}
+.industry-deck .banking-feedback{display:flex;align-items:center;gap:19px;border-top:1px solid var(--teal);padding-top:15px}
+.industry-deck .banking-feedback>span{font-size:34px;color:var(--accent);flex:none}
+.industry-deck .banking-feedback strong{font-size:17px;color:var(--accent)}
+.industry-deck .banking-feedback p{font-size:14px;color:var(--muted);margin-top:4px}
+@media(prefers-reduced-motion:reduce){.industry-deck .banking-dialogue-path i{animation:none;transform:none;opacity:1}}
 @media(max-width:950px){
-  .industry-bancs .banking-platform{gap:24px;padding:20px}
-  .industry-bancs .banking-platform-work{grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
-  .industry-bancs .banking-answer{gap:30px}
-  .industry-bancs .banking-population,.industry-bancs .banking-gate{gap:30px}
-  .industry-bancs .banking-population-item:not(:last-child):after{right:-23px}
-  .industry-bancs .banking-gate>li:not(:last-child):after{right:-23px}
+  .industry-deck .banking-platform{gap:24px;padding:20px}
+  .industry-deck .banking-platform-work{grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+  .industry-deck .banking-answer{gap:30px}
+  .industry-deck .banking-population,.industry-deck .banking-gate{gap:30px}
+  .industry-deck .banking-population-item:not(:last-child):after{right:-23px}
+  .industry-deck .banking-gate>li:not(:last-child):after{right:-23px}
 }
 @media(max-width:650px){
-  .industry-bancs .banking-conversation{grid-template-columns:1fr;gap:22px}
-  .industry-bancs .banking-question blockquote{font-size:26px}
-  .industry-bancs .banking-return{padding-left:16px}
-  .industry-bancs .banking-return>strong{font-size:22px}
-  .industry-bancs .banking-platform{display:block;padding:20px}
-  .industry-bancs .banking-platform-work{margin-top:20px;gap:18px}
-  .industry-bancs .banking-platform-work li{padding-left:10px;font-size:15px}
-  .industry-bancs .banking-platform-name>strong{font-size:39px}
-  .industry-bancs .banking-sources{grid-template-columns:1fr 1fr}
-  .industry-bancs .banking-sources:before{left:25%;right:25%}
-  .industry-bancs .banking-sources li{font-size:16px;padding-inline:6px}
-  .industry-bancs .banking-sources li:nth-child(n+3):before{border-color:var(--line)}
-  .industry-bancs .banking-opening-caption{align-items:start;font-size:12px}
-  .industry-bancs .banking-population{grid-template-columns:1fr;gap:0}
-  .industry-bancs .banking-population-item{display:grid;grid-template-columns:110px 1fr;gap:5px 18px;align-items:center;border-bottom:1px solid var(--line);padding:15px 0}
-  .industry-bancs .banking-population-item>.label{grid-column:2;align-self:end}
-  .industry-bancs .banking-population-item>strong{grid-column:1;grid-row:1/3;font-size:39px;margin:0}
-  .industry-bancs .banking-population-item>p{grid-column:2;font-size:14px}
-  .industry-bancs .banking-population-item:not(:last-child):after{display:none}
-  .industry-bancs .banking-mapping{align-items:start}
-  .industry-bancs .banking-mapping p{font-size:18px}
-  .industry-bancs .banking-gate{grid-template-columns:1fr;gap:28px}
-  .industry-bancs .banking-gate>li:not(:last-child):after{content:'↓';left:10px;right:auto;top:auto;bottom:-25px}
-  .industry-bancs .banking-answer{grid-template-columns:1fr;gap:30px}
-  .industry-bancs .banking-answer-conversation blockquote{font-size:27px}
-  .industry-bancs .banking-role-tree li{padding-bottom:20px}
-  .industry-bancs .banking-role-tree li p{font-size:15px}
-  .industry-bancs .banking-feedback{align-items:start}
+  .industry-deck .banking-conversation{grid-template-columns:1fr;gap:22px}
+  .industry-deck .banking-question blockquote{font-size:26px}
+  .industry-deck .banking-return{padding-left:16px}
+  .industry-deck .banking-return>strong{font-size:22px}
+  .industry-deck .banking-platform{display:block;padding:20px}
+  .industry-deck .banking-platform-work{margin-top:20px;gap:18px}
+  .industry-deck .banking-platform-work li{padding-left:10px;font-size:15px}
+  .industry-deck .banking-platform-name>strong{font-size:39px}
+  .industry-deck .banking-sources{grid-template-columns:1fr 1fr}
+  .industry-deck .banking-sources:before{left:25%;right:25%}
+  .industry-deck .banking-sources li{font-size:16px;padding-inline:6px}
+  .industry-deck .banking-sources li:nth-child(n+3):before{border-color:var(--line)}
+  .industry-deck .banking-opening-caption{align-items:start;font-size:12px}
+  .industry-deck .banking-population{grid-template-columns:1fr;gap:0}
+  .industry-deck .banking-population-item{display:grid;grid-template-columns:110px 1fr;gap:5px 18px;align-items:center;border-bottom:1px solid var(--line);padding:15px 0}
+  .industry-deck .banking-population-item>.label{grid-column:2;align-self:end}
+  .industry-deck .banking-population-item>strong{grid-column:1;grid-row:1/3;font-size:39px;margin:0}
+  .industry-deck .banking-population-item>p{grid-column:2;font-size:14px}
+  .industry-deck .banking-population-item:not(:last-child):after{display:none}
+  .industry-deck .banking-mapping{align-items:start}
+  .industry-deck .banking-mapping p{font-size:18px}
+  .industry-deck .banking-gate{grid-template-columns:1fr;gap:28px}
+  .industry-deck .banking-gate>li:not(:last-child):after{content:'↓';left:10px;right:auto;top:auto;bottom:-25px}
+  .industry-deck .banking-answer{grid-template-columns:1fr;gap:30px}
+  .industry-deck .banking-answer-conversation blockquote{font-size:27px}
+  .industry-deck .banking-role-tree li{padding-bottom:20px}
+  .industry-deck .banking-role-tree li p{font-size:15px}
+  .industry-deck .banking-feedback{align-items:start}
 }
 @media print{
-  .industry-bancs .banking-dialogue-path i{animation:none}
-  .industry-bancs .banking-opening-caption button,.industry-bancs .banking-guide-inline{display:none!important}
-  .industry-bancs .banking-opening,.industry-bancs .banking-case,.industry-bancs .banking-answer,.industry-bancs .banking-feedback{break-inside:avoid}
-  .industry-bancs .banking-platform{padding:14px 18px}
-  .industry-bancs .banking-population-item>strong{font-size:52px}
+  .industry-deck .banking-dialogue-path i{animation:none}
+  .industry-deck .banking-opening-caption button,.industry-deck .banking-guide-inline{display:none!important}
+  .industry-deck .banking-opening,.industry-deck .banking-case,.industry-deck .banking-answer,.industry-deck .banking-feedback{break-inside:avoid}
+  .industry-deck .banking-platform{padding:14px 18px}
+  .industry-deck .banking-population-item>strong{font-size:52px}
 }
 
 @media(max-width:1100px){

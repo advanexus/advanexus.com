@@ -178,10 +178,18 @@ code, .code {
 .scenario-number { color: var(--guide-accent); font-size: 12px; font-weight: 600; letter-spacing: .04em; }
 .scenario-number > span { margin-left: 12px; font-size: 10px; }
 .chooser-note { margin-top: 24px; max-width: 860px; color: var(--guide-muted); font-size: 12px; }
+.chooser-heading .eyebrow { text-transform: none; }
 .scenario-audience { margin-top: 9px; color: var(--guide-muted); font-size: 11px; font-weight: 500; line-height: 1.4; text-transform: uppercase; letter-spacing: .04em; }
 .scenario-card h2 { max-width: 540px; margin: 12px 0; font-size: 24px; letter-spacing: -.025em; text-wrap: balance; }
 .scenario-card p { max-width: 630px; margin-bottom: 24px; color: var(--guide-muted); font-size: 14px; }
 .scenario-outcome { display: block; width: 100%; margin-top: auto; padding-top: 16px; border-top: 1px solid var(--guide-line); color: var(--guide-accent); font-size: 12px; font-weight: 600; }
+.scenario-readiness { margin-top: 24px; border-top: 1px solid var(--guide-line); padding-top: 16px; }
+.scenario-readiness summary { cursor: pointer; color: var(--guide-accent); font-weight: 600; }
+.scenario-readiness > p { margin: 14px 0; max-width: 880px; color: var(--guide-muted); }
+.scenario-readiness dt { margin-top: 12px; font-weight: 600; }
+.scenario-readiness dd { margin: 4px 0 0; color: var(--guide-muted); }
+.scenario-readiness table { min-width: 640px; }
+.scenario-readiness th[scope="row"] { min-width: 170px; text-transform: none; letter-spacing: normal; }
 
 /* App shell and the independently labelled guide rail. */
 .tour-shell {

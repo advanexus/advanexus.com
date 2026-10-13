@@ -1,7 +1,7 @@
 /* A deterministic, local walkthrough. No requests, credentials, storage or AI calls. */
 (() => {
   'use strict';
-  const {copy: ui, scenarios, locale} = JSON.parse(document.getElementById('guide-data').textContent);
+  const {copy: ui, scenarios, locale, project_name: projectName = 'Banks'} = JSON.parse(document.getElementById('guide-data').textContent);
   const $ = (id) => document.getElementById(id);
   const t = (sr, en) => locale === 'rs' ? sr : en;
   const esc = (value) => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'}[char]));
@@ -43,12 +43,12 @@
     const entries = [...scenario.evidence];
     const prefix = `SIM-${scenario.id.toUpperCase()}`;
     if (state.connected) entries.push({
-      time: '07:02:00 UTC', status: 'RECORDED', reference: `${prefix}-ACCESS-01`,
+      time: scenario.timeline?.access || '07:02:00 UTC', status: 'RECORDED', reference: `${prefix}-ACCESS-01`,
       event: t('Potvrđen izabrani AI obuhvat', 'Selected AI scope confirmed'),
       detail: t('U simulaciji je potvrđen pregled ', 'The simulation confirmed the review ') + scenario.connection.resource + '. ' + ui.connection_boundary
     });
     if (state.connected && state.answered) entries.push({
-      time: '07:02:10 UTC', status: 'RECORDED', reference: `${prefix}-ANSWER-01`,
+      time: scenario.timeline?.answer || '07:02:10 UTC', status: 'RECORDED', reference: `${prefix}-ANSWER-01`,
       event: t('Odgovor vezan za isti odobreni rezultat', 'Answer linked to the same approved result'),
       detail: `${scenario.question} ${ui.chat_scope} ${ui.chat_subtitle}`
     });
@@ -138,7 +138,8 @@
 
   function renderSources() {
     const rows = scenario.sources.map((source, index) => `<tr><td><button class="reference-link" type="button" data-source="${index}">${esc(source.name)}</button></td><td>${esc(source.role)}</td><td class="code">${esc(source.records)}</td><td class="code">${esc(source.stamp)}</td></tr>`).join('');
-    return panel(ui.sources, `<div class="data-table-wrap" role="region" tabindex="0" aria-label="${esc(ui.sources)}"><table class="data-table"><thead><tr><th scope="col">${esc(ui.source)}</th><th scope="col">${esc(ui.role)}</th><th scope="col">${esc(ui.records)}</th><th scope="col">${esc(ui.observed)}</th></tr></thead><tbody>${rows}</tbody></table></div>${callout(ui.source_note)}`, 'Sources') + callout(scenario.benefit, 'success');
+    const foundation = scenario.foundation && ui.readiness_title ? `<details class="scenario-readiness"><summary>${esc(ui.readiness_title)}</summary><dl><dt>${esc(ui.foundation_label)}</dt><dd>${esc(scenario.foundation)}</dd><dt>${esc(ui.unconfirmed_label)}</dt><dd>${esc(scenario.unconfirmed)}</dd></dl></details>` : '';
+    return panel(ui.sources, `<div class="data-table-wrap" role="region" tabindex="0" aria-label="${esc(ui.sources)}"><table class="data-table"><thead><tr><th scope="col">${esc(ui.source)}</th><th scope="col">${esc(ui.role)}</th><th scope="col">${esc(ui.records)}</th><th scope="col">${esc(ui.observed)}</th></tr></thead><tbody>${rows}</tbody></table></div>${callout(ui.source_note)}${foundation}`, 'Sources') + callout(scenario.benefit, 'success');
   }
 
   function renderPipeline() {
@@ -168,7 +169,7 @@
 
   function renderConnection() {
     const state = simulationStates();
-    return panel(ui.connection_title, `<p>${esc(ui.connection_intro)}</p><div class="consent-card"><div class="detail-grid"><div class="detail-pair"><span>${esc(ui.client)}</span><strong>${esc(ui.client_name)}</strong></div><div class="detail-pair"><span>${esc(ui.project)}</span><strong>Banks</strong></div></div><div class="resource-scope"><p class="section-eyebrow">${esc(ui.connection_resource)}</p><h3>${esc(scenario.connection.resource)}</h3><p>${esc(ui.selected_fields)}</p><div class="scope-fields">${scenario.connection.fields.map(field => `<span class="scope-field code">${esc(field.name)}</span>`).join('')}</div></div><p class="muted">✓ ${esc(ui.help)}</p>${state.connected ? `<div class="connection-state">${pill('SUCCEEDED')}<p>${esc(ui.consent_confirmed)}</p></div>` : `<label class="consent-check"><input id="consent-toggle" type="checkbox" ${state.consent ? 'checked' : ''}><span>${esc(ui.consent)}</span></label><button type="button" class="primary screen-action" data-action="confirm-preview" ${state.consent ? '' : 'disabled'}>${esc(ui.consent_button)}</button>`}</div>${callout(ui.connection_boundary)}`, 'AI Control & Evidence');
+    return panel(ui.connection_title, `<p>${esc(ui.connection_intro)}</p><div class="consent-card"><div class="detail-grid"><div class="detail-pair"><span>${esc(ui.client)}</span><strong>${esc(ui.client_name)}</strong></div><div class="detail-pair"><span>${esc(ui.project)}</span><strong>${esc(projectName)}</strong></div></div><div class="resource-scope"><p class="section-eyebrow">${esc(ui.connection_resource)}</p><h3>${esc(scenario.connection.resource)}</h3><p>${esc(ui.selected_fields)}</p><div class="scope-fields">${scenario.connection.fields.map(field => `<span class="scope-field code">${esc(field.name)}</span>`).join('')}</div></div><p class="muted">✓ ${esc(ui.help)}</p>${state.connected ? `<div class="connection-state">${pill('SUCCEEDED')}<p>${esc(ui.consent_confirmed)}</p></div>` : `<label class="consent-check"><input id="consent-toggle" type="checkbox" ${state.consent ? 'checked' : ''}><span>${esc(ui.consent)}</span></label><button type="button" class="primary screen-action" data-action="confirm-preview" ${state.consent ? '' : 'disabled'}>${esc(ui.consent_button)}</button>`}</div>${callout(ui.connection_boundary)}`, 'AI Control & Evidence');
   }
 
   function renderChat() {
