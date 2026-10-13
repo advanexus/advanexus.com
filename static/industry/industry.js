@@ -1,6 +1,23 @@
-/* Local, opt-in calculation only: no storage, telemetry, network or AI calls. */
+/* Local calculation and display navigation: no storage, telemetry or AI calls. */
 (() => {
   'use strict';
+  const guideLinks = Array.from(document.querySelectorAll('[data-guide-link]'));
+  if (guideLinks.length) {
+    const syncGuideTheme = () => {
+      const theme = document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
+      guideLinks.forEach(link => {
+        const destination = new URL(link.getAttribute('href'), window.location.href);
+        destination.searchParams.set('theme', theme);
+        link.setAttribute('href', destination.pathname + destination.search + destination.hash);
+      });
+    };
+    // pitch.js is loaded first; defer theme clicks until its handler applies
+    // the new theme. Direct generated-page links retain this query on Pages.
+    syncGuideTheme();
+    document.querySelector('button[data-theme]')?.addEventListener('click', () => {
+      window.requestAnimationFrame(syncGuideTheme);
+    });
+  }
   document.addEventListener('input', event => {
     const calculator = event.target.closest('[data-calculator]');
     if (!calculator) return;
