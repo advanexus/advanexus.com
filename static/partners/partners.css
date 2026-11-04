@@ -79,7 +79,7 @@ dialog{padding:0;border:1px solid var(--line);border-radius:22px;background:var(
 @media print{@page{size:landscape;margin:0}:root,:root[data-theme="dark"]{--bg:#fff;--surface:#fff;--surface2:#edf3f1;--surface3:#e6eeeb;--text:#102c35;--muted:#496571;--subtle:#597480;--line:#d6e2dd;--accent:#087964;--accentBg:#f0f8f4;--accentLine:#b3d5c7;--warm:#88590c;--warmBg:#fff4df;--red:#ae3e41;--redBg:#fff0ef;--shadow:none}html,body{height:auto;overflow:visible;background:white!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.app-header,.app-footer,dialog,.toast,.skip,.slide .source-btn,.slide .play-btn,.hide-print{display:none!important}.stage{position:static;overflow:visible;height:auto}.slide,.slide.active{display:flex!important;min-height:0;height:209mm;width:297mm;max-width:none;padding:12mm 15mm;break-after:page;break-inside:avoid;page-break-after:always;animation:none!important;justify-content:center}.slide:last-child{break-after:auto}.slide::before{display:none}.hero{grid-template-columns:.91fr 1.09fr;gap:25px}.hero h1{font-size:44px}.hero .hero-lede{font-size:17px}.hero .hero-partner{font-size:12px}.hero .eyebrow{font-size:10px}.hero .button{font-size:11px;padding:10px 15px}.hero-footer{margin-top:23px;padding-top:19px}.hero-footer .promise{font-size:10px}.hero-footer .fine{font-size:9px}.slide-head{margin-bottom:22px}.slide-head h2{font-size:36px}.slide-head .lede{font-size:14px}.slide-head .eyebrow{font-size:10px}.grid3{grid-template-columns:repeat(3,1fr)}.card{padding:20px}.card h3{font-size:22px}.card p{font-size:12px}.pain-card h3{min-height:53px}.pain-card p{min-height:73px}.journey{grid-template-columns:repeat(5,1fr)}.journey-card{min-height:196px;padding:17px 13px}.journey-card h3{font-size:19px}.journey-card p{font-size:10px}.journey-foundation{font-size:10px}.capability-bar{font-size:10px}.scenario-layout{grid-template-columns:1.25fr 1fr;gap:22px}.scenario-aside{display:flex;gap:15px}.scenario-inner{padding:16px}.scenario-toolbar button{font-size:9px}.metric .metric-value{font-size:33px}.metric label{font-size:10px}.scenario-line{font-size:11px;padding:9px 0}.scenario-line .outcome{font-size:10px}.story-copy h3{font-size:24px}.story-copy p{font-size:12px}.role-item p{font-size:11px}.responsibility-card{min-height:255px}.partner-model{min-height:202px}.partner-model h3{font-size:21px;min-height:49px}.commercial-grid{grid-template-columns:repeat(4,1fr)}.commercial-piece{padding:15px}.commercial-piece h4{font-size:14px}.commercial-piece p{font-size:10px}.status-layout{grid-template-columns:1fr 1.17fr}.timeline-card{padding:22px}.timeline-row p{font-size:11px}.timeline-row h3{font-size:18px}.timeline-row{padding-bottom:20px}.product-fact p{font-size:11px}.delivery-steps{grid-template-columns:repeat(5,1fr);gap:15px}.delivery-step h3{font-size:18px;min-height:42px}.delivery-step p{font-size:11px}.measure-grid{grid-template-columns:repeat(5,1fr)}.measure-item{font-size:10px;padding:14px 12px}.measure-head{font-size:12px}.measure-head span{font-size:10px}.closing-cards{grid-template-columns:1fr 1fr 1.12fr}.closing-card{min-height:184px;padding:20px}.closing-card.primary{grid-column:auto}.closing-head h2{font-size:43px}.closing-head p{font-size:15px}.closing-card h3{font-size:22px}.closing-card p{font-size:10px}.closing-contact{margin-top:20px}.meta-line{font-size:9px}.bottom-band{font-size:12px}.print-only{display:block;position:absolute;bottom:7mm;left:15mm;right:15mm;font-size:9px;color:var(--subtle)}.print-page{float:right}.slide a:after{content:none!important}}
 :root{--partner-edition:1}
 /* Shared visual language of the banking and supply-chain editions. */
-@font-face{font-family:"Space Grotesk";src:url("/assets/fonts/SpaceGrotesk-variable.woff2") format("woff2");font-weight:300 700;font-style:normal;font-display:swap}
+@font-face{font-family:"Space Grotesk";src:url("/assets/dist/fonts/SpaceGrotesk-variable.8e085aa43809.woff2") format("woff2");font-weight:300 700;font-style:normal;font-display:swap}
 :root{--bg:#151c24;--surface:#202c36;--surface2:#26343d;--surface3:#2d3c46;--text:#f4f4ee;--muted:#aebac4;--subtle:#a1b1bb;--line:#384550;--accent:#70e5cb;--brand:#54debf;--accentBg:#183932;--accentLine:#397568;--warm:#efb66e;--header:64px;--footer:54px;--radius:8px;--sans:"Space Grotesk",system-ui,sans-serif;--body:var(--sans);--shadow:none;color-scheme:dark}
 :root[data-theme=light]{--bg:#f7f7f2;--surface:#edf1ed;--surface2:#e9efeb;--surface3:#e0e9e4;--text:#172c36;--muted:#526671;--subtle:#526671;--line:#bdccce;--accent:#006b53;--brand:#04775f;--accentBg:#def0e7;--accentLine:#83b4a3;--warm:#97560f;--shadow:none;color-scheme:light}
 h1,h2,h3,h4{font-weight:500}
@@ -234,6 +234,33 @@ html:not(.enhanced) .stage .static-modules [data-action]{display:none}
 .solution-system-link:before{top:-16px;height:16px}
 .solution-system-link:after{bottom:-9px;height:9px}
 .solution-caption{font-size:12px;line-height:1.5;color:var(--muted);text-align:center;margin:14px 0 0}
+/* Styles previously supplied by presentation markup remain CSP-safe here. */
+.closing-meta{max-width:1120px;width:100%;align-self:center}
+.fine.detail-note{margin-top:18px}
+.fine.access-note{margin-top:13px}
+.fine.navigation-note{margin-top:14px}
+.small-label.case-process-label{margin-bottom:17px}
+.quality-track[data-stage="0"] span{width:0}
+.quality-track[data-stage="1"] span{width:98.8%}
+.quality-track[data-stage="2"] span{width:100%}
+.clipboard-fallback{position:fixed;left:0;top:0;width:1px;height:1px;opacity:0}
+.dialog-toast{position:absolute;z-index:10;bottom:17px;left:20px;right:20px;padding:12px 17px;border:1px solid var(--accentLine);border-radius:10px;background:var(--surface2);color:var(--text);font-size:12px;box-shadow:var(--shadow);pointer-events:none}
+.partner-dot[data-value="fabric"]{left:28%;top:20%}
+.partner-dot[data-value="databricks"]{left:33%;top:9%}
+.partner-dot[data-value="informatica"]{left:22%;top:39%}
+.partner-dot[data-value="collibra"]{left:21%;top:75%}
+.partner-dot[data-value="dataiku"]{left:49%;top:18%}
+.partner-dot[data-value="palantir"]{left:85%;top:10%}
+.partner-dot[data-value="celonis"]{left:84%;top:41%}
+.partner-dot[data-value="advanexus"]{left:64%;top:30%}
+.progress-line[data-step="1"] span{width:12.5%}
+.progress-line[data-step="2"] span{width:25%}
+.progress-line[data-step="3"] span{width:37.5%}
+.progress-line[data-step="4"] span{width:50%}
+.progress-line[data-step="5"] span{width:62.5%}
+.progress-line[data-step="6"] span{width:75%}
+.progress-line[data-step="7"] span{width:87.5%}
+.progress-line[data-step="8"] span{width:100%}
 /* The same coordinate-map interaction used by the industry presentations. */
 .partner-compare-tabs{display:flex;gap:27px;align-items:stretch;border-bottom:1px solid var(--line);margin-bottom:16px}
 .partner-compare-tabs [role=tab]{padding:0 0 10px;font-size:14px;line-height:1.4;color:var(--muted);border-bottom:2px solid transparent;min-height:37px}

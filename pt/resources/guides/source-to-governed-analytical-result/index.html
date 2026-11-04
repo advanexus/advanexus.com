@@ -83,14 +83,16 @@
   <meta name="twitter:image" content="https://www.advanexus.com/assets/dist/icons/social-card.b89404f2b760.png">
   <meta name="twitter:image:alt" content="advanexus — controlo e evidência para a execução empresarial entre sistemas, dados e trabalho assistido por IA.">
   <link rel="preload" href="/assets/dist/fonts/SpaceGrotesk-variable.8e085aa43809.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/dist/css/site.868f77dd0a2b.css">
+  <link rel="stylesheet" href="/assets/dist/css/site.8cc86315ce08.css">
   
-  
+  <link rel="stylesheet" href="/assets/dist/css/buyer-journey.06cc2f3c003a.css">
 
+  <link rel="stylesheet" href="/assets/dist/css/site-experience.01f8670497b3.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://www.advanexus.com/pt/resources/guides/source-to-governed-analytical-result/#webpage","url":"https://www.advanexus.com/pt/resources/guides/source-to-governed-analytical-result/","name":"Da Source ao resultado analítico governado | Guia do advanexus","description":"Siga as transições explícitas do advanexus desde Source ou FileVersion, passando por qualidade, DatasetVersion e ReportVersion, até AnalyticsRun.","inLanguage":"pt-PT","isPartOf":{"@id":"https://www.advanexus.com/#website"},"publisher":{"@id":"https://www.advanexus.com/#organization"},"about":{"@id":"https://www.advanexus.com/pt/resources/#topic-resources"},"dateModified":"2026-07-16","headline":"De uma entrada conhecida a um resultado analítico governado.","author":{"@id":"https://www.advanexus.com/#organization"},"mainEntityOfPage":"https://www.advanexus.com/pt/resources/guides/source-to-governed-analytical-result/","articleSection":"Orientação e terminologia do produto","keywords":["Orientação e terminologia do produto"],"datePublished":"2026-07-16","breadcrumb":{"@id":"https://www.advanexus.com/pt/resources/guides/source-to-governed-analytical-result/#breadcrumb"}},{"@type":"DefinedTerm","@id":"https://www.advanexus.com/pt/resources/#topic-resources","name":"Orientação e terminologia do produto","description":"Guias operacionais, terminologia pública, alterações de capacidades e explicações práticas do produto.","url":"https://www.advanexus.com/pt/resources/"},{"@type":"BreadcrumbList","@id":"https://www.advanexus.com/pt/resources/guides/source-to-governed-analytical-result/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://www.advanexus.com/pt/"},{"@type":"ListItem","position":2,"name":"Recursos","item":"https://www.advanexus.com/pt/resources/"},{"@type":"ListItem","position":3,"name":"Guias e insights","item":"https://www.advanexus.com/pt/resources/guides/"},{"@type":"ListItem","position":4,"name":"Fonte para resultados governados","item":"https://www.advanexus.com/pt/resources/guides/source-to-governed-analytical-result/"}]}]}</script>
   <script src="/assets/dist/js/typing.d72c71ee9cf4.js" defer></script>
   <script src="/assets/dist/js/form-safety.3b307b166fd8.js" defer></script>
   <script src="/assets/dist/js/main.8566869dc07e.js" defer></script>
+  <script src="/assets/dist/js/site-experience.63f342a72b88.js" defer></script>
   
 </head>
 <body data-page-id="guide-source-to-governed-result" data-page-kind="article">
@@ -124,7 +126,7 @@
                 <svg class="icon icon--chevron" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="m5 7.5 5 5 5-5"/></svg>
               </summary>
               <div class="nav-group__panel nav-group__panel--buyer">
-                <p class="nav-group__intro">advanexus é uma plataforma para ligar e processar dados dos seus sistemas e ficheiros. Prepare dados, execute verificações de negócio e crie relatórios, com regras claras de acesso e um registo de cada execução.</p>
+                <p class="nav-group__intro">Ligue dados de bases de dados e ficheiros num processo reutilizável: preparar, transferir, verificar e analisar. As versões e os registos de execução relevantes acompanham o resultado, para que a próxima pergunta não dê início a outra pesquisa.</p>
                 <div class="nav-group__columns nav-group__columns--4">
                   
                     <section class="nav-group__column" aria-label="Explorar o produto">
@@ -849,6 +851,33 @@
   </div>
     </div>
   </section>
+  
+  
+
+<nav class="page-compass" aria-label="Nesta página" data-page-compass>
+  <div class="shell page-compass__inner">
+    
+    <span class="page-compass__label">Nesta página</span>
+    
+    <ol role="list">
+      
+      <li><a href="#section-1-title"><span aria-hidden="true">01</span>Pergunta de decisão</a></li>
+      
+      <li><a href="#section-2-title"><span aria-hidden="true">02</span>Objetos e controlos usados</a></li>
+      
+      <li><a href="#section-3-title"><span aria-hidden="true">03</span>Fluxo operacional</a></li>
+      
+      <li><a href="#section-4-title"><span aria-hidden="true">04</span>Falha e caminhos parciais</a></li>
+      
+      <li><a href="#section-5-title"><span aria-hidden="true">05</span>Evidências produzidas</a></li>
+      
+      <li><a href="#section-6-title"><span aria-hidden="true">06</span>Limite actual</a></li>
+      
+    </ol>
+    
+  </div>
+</nav>
+
 
   
   
@@ -1206,6 +1235,7 @@
   
   
   
+  
     <section class="related-pages" aria-labelledby="related-title">
       <div class="shell">
         <div class="related-pages__heading">
@@ -1218,29 +1248,29 @@
           
             <a class="related-card" href="/pt/product/data-operations/">
               <span class="related-card__eyebrow ">Operações de dados</span>
-              <strong>Ligue, inspecione, transforme e execute com âmbito e contexto explícitos.</strong>
-              <p>Passe de fontes heterogéneas e ficheiros controlados para tabelas geridas, controlos de qualidade e histórico persistente de execuções, sem forçar todos os conectores a partilhar o mesmo modelo de consulta ou escrita.</p>
+              <strong>Transforme dados de fontes separadas em trabalho repetível.</strong>
+              <p>Explore bases ligadas, prepare ficheiros e tabelas e organize transferências e verificações de qualidade suportadas. Mantenha juntos a definição, o estado de execução e o resultado registado ao repetir o trabalho.</p>
               <span aria-hidden="true">→</span>
             </a>
           
             <a class="related-card" href="/pt/product/data-quality/">
               <span class="related-card__eyebrow ">Qualidade dos dados</span>
-              <strong>Torne a qualidade parte da execução, não um documento posterior.</strong>
-              <p>O Data Quality transforma expectativas orientadas para a origem em asserções SQL repetíveis, com uma condição de aprovação clara, QualityRun persistente e evidência de falha delimitada.</p>
+              <strong>Detete exceções nos dados antes do próximo passo.</strong>
+              <p>Defina os dados aceitáveis, execute verificações repetíveis e examine falhas registadas. Os controlos de fluxo suportados interrompem o trabalho seguinte quando uma verificação obrigatória falha.</p>
               <span aria-hidden="true">→</span>
             </a>
           
             <a class="related-card" href="/pt/product/governed-datasets/">
               <span class="related-card__eyebrow ">Datasets governados</span>
-              <strong>Transforme definições de dados em ativos versionados com linhagem explícita.</strong>
-              <p>O Dataset separa o SQL exploratório de um contrato de dados reutilizável. A identidade estável, as versões imutáveis e os metadados semânticos criam uma base controlada para reporting sem ocultar a linhagem da origem.</p>
+              <strong>Prepare um conjunto de dados uma vez. Controle as alterações à sua definição.</strong>
+              <p>Crie um conjunto reutilizável para análises e relatórios. Compare versões da consulta e das colunas, mantenha a referência à fonte e escolha quando um relatório adota uma definição alterada.</p>
               <span aria-hidden="true">→</span>
             </a>
           
             <a class="related-card" href="/pt/product/controlled-analytics/">
               <span class="related-card__eyebrow ">Analítica controlada</span>
-              <strong>Fixe o contrato de dados. Governe a execução. Explique o resultado.</strong>
-              <p>A analítica controlada liga um relatório a DatasetVersion exatos, valida o Query Context no servidor e conserva as permissões, o RLS, os filtros, as ligações e o contexto dos artefactos subjacentes a um resultado suportado.</p>
+              <strong>Mostre os números. Explique o resultado por trás deles.</strong>
+              <p>Crie relatórios e gráficos a partir de uma versão aceite do conjunto de dados. Explore dimensões e filtros e regresse à definição guardada e ao contexto de execução quando surgirem perguntas sobre o resultado.</p>
               <span aria-hidden="true">→</span>
             </a>
           
@@ -1271,12 +1301,12 @@
     <div class="content-section__body accordion">
       
       <details class="accordion__item">
-        <summary>Todos os conectores suportam as mesmas operações?</summary>
+        <summary><span>Todos os conectores suportam as mesmas operações?</span><svg class="icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h12M10 4v12"/></svg></summary>
         <div class="accordion__answer"><p>Não. Os contratos de fonte, driver e implementação determinam o comportamento de metadados, pré-visualização, consulta, transferência, escrita, qualidade e analítica no ambiente exato do conector.</p></div>
       </details>
       
       <details class="accordion__item">
-        <summary>Onde ficam os dados do cliente?</summary>
+        <summary><span>Onde ficam os dados do cliente?</span><svg class="icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h12M10 4v12"/></svg></summary>
         <div class="accordion__answer"><p>A implementação e a política do job determinam o percurso. Trabalho STANDARD suportado pode utilizar spool controlado; EPHEMERAL_STAGING exige eliminação verificada antes do sucesso; NO_STAGING permite apenas um percurso direto da origem ao destino, sem conteúdo persistido e com páginas limitadas em memória. Continuam a aplicar-se a capacidade do conector e a aceitação em produção.</p></div>
       </details>
       
@@ -1284,6 +1314,8 @@
   </div>
 </section>
 
+
+  
 
   </main>
 

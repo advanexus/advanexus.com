@@ -83,14 +83,16 @@
   <meta name="twitter:image" content="https://www.advanexus.com/assets/dist/icons/social-card.b89404f2b760.png">
   <meta name="twitter:image:alt" content="advanexus——贯穿系统、数据与 AI 辅助工作的企业执行控制与证据系统。">
   <link rel="preload" href="/assets/dist/fonts/SpaceGrotesk-variable.8e085aa43809.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/dist/css/site.868f77dd0a2b.css">
+  <link rel="stylesheet" href="/assets/dist/css/site.8cc86315ce08.css">
   
-  
+  <link rel="stylesheet" href="/assets/dist/css/buyer-journey.06cc2f3c003a.css">
 
+  <link rel="stylesheet" href="/assets/dist/css/site-experience.01f8670497b3.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://www.advanexus.com/zh/resources/guides/evolve-dataset-report-versions/#webpage","url":"https://www.advanexus.com/zh/resources/guides/evolve-dataset-report-versions/","name":"演进 Dataset 与 Report 版本 | advanexus 指南","description":"比较 Dataset 版本、验证分析兼容性，并在新的 ReportVersion 中接受新的准确 DatasetVersion。","inLanguage":"zh-Hans","isPartOf":{"@id":"https://www.advanexus.com/#website"},"publisher":{"@id":"https://www.advanexus.com/#organization"},"about":{"@id":"https://www.advanexus.com/zh/resources/#topic-resources"},"dateModified":"2026-07-16","headline":"在不改写历史的前提下演进 Dataset 与报告。","author":{"@id":"https://www.advanexus.com/#organization"},"mainEntityOfPage":"https://www.advanexus.com/zh/resources/guides/evolve-dataset-report-versions/","articleSection":"产品指南与术语","keywords":["产品指南与术语"],"datePublished":"2026-07-16","breadcrumb":{"@id":"https://www.advanexus.com/zh/resources/guides/evolve-dataset-report-versions/#breadcrumb"}},{"@type":"DefinedTerm","@id":"https://www.advanexus.com/zh/resources/#topic-resources","name":"产品指南与术语","description":"运营指南、公共术语、能力变更与实用产品说明。","url":"https://www.advanexus.com/zh/resources/"},{"@type":"BreadcrumbList","@id":"https://www.advanexus.com/zh/resources/guides/evolve-dataset-report-versions/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://www.advanexus.com/zh/"},{"@type":"ListItem","position":2,"name":"资源","item":"https://www.advanexus.com/zh/resources/"},{"@type":"ListItem","position":3,"name":"指南与洞察","item":"https://www.advanexus.com/zh/resources/guides/"},{"@type":"ListItem","position":4,"name":"演进 Dataset 与 Report 版本","item":"https://www.advanexus.com/zh/resources/guides/evolve-dataset-report-versions/"}]}]}</script>
   <script src="/assets/dist/js/typing.d72c71ee9cf4.js" defer></script>
   <script src="/assets/dist/js/form-safety.3b307b166fd8.js" defer></script>
   <script src="/assets/dist/js/main.8566869dc07e.js" defer></script>
+  <script src="/assets/dist/js/site-experience.63f342a72b88.js" defer></script>
   
 </head>
 <body data-page-id="guide-evolve-dataset-report" data-page-kind="article">
@@ -124,7 +126,7 @@
                 <svg class="icon icon--chevron" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="m5 7.5 5 5 5-5"/></svg>
               </summary>
               <div class="nav-group__panel nav-group__panel--buyer">
-                <p class="nav-group__intro">advanexus 是连接和处理现有系统与文件数据的平台。您可以准备数据、执行业务检查和创建报表，同时明确访问规则并记录每次执行。</p>
+                <p class="nav-group__intro">将数据库和文件中的数据接入可重复使用的流程：准备、传输、核查和分析。相关版本与执行记录随结果保留，让下一个问题不必从重新查找开始。</p>
                 <div class="nav-group__columns nav-group__columns--4">
                   
                     <section class="nav-group__column" aria-label="了解产品">
@@ -834,6 +836,33 @@
   </div>
     </div>
   </section>
+  
+  
+
+<nav class="page-compass" aria-label="本页内容" data-page-compass>
+  <div class="shell page-compass__inner">
+    
+    <span class="page-compass__label">本页内容</span>
+    
+    <ol role="list">
+      
+      <li><a href="#section-1-title"><span aria-hidden="true">01</span>决策问题</a></li>
+      
+      <li><a href="#section-2-title"><span aria-hidden="true">02</span>使用的对象与控制</a></li>
+      
+      <li><a href="#section-3-title"><span aria-hidden="true">03</span>接受流程</a></li>
+      
+      <li><a href="#section-4-title"><span aria-hidden="true">04</span>失败与部分路径</a></li>
+      
+      <li><a href="#section-5-title"><span aria-hidden="true">05</span>生成的证据</a></li>
+      
+      <li><a href="#section-6-title"><span aria-hidden="true">06</span>当前边界</a></li>
+      
+    </ol>
+    
+  </div>
+</nav>
+
 
   
   
@@ -1161,6 +1190,7 @@
   
   
   
+  
     <section class="related-pages" aria-labelledby="related-title">
       <div class="shell">
         <div class="related-pages__heading">
@@ -1173,15 +1203,15 @@
           
             <a class="related-card" href="/zh/product/governed-datasets/">
               <span class="related-card__eyebrow ">受治理的数据集</span>
-              <strong>将数据定义转化为具有明确血缘的版本化资产。</strong>
-              <p>Dataset 将探索性 SQL 与可复用数据契约分离。其稳定身份、不可变版本和语义元数据为报告建立受控基础，同时不隐藏来源血缘。</p>
+              <strong>准备一次数据集，掌握定义的每次变化。</strong>
+              <p>创建可用于分析和报表的可复用数据集。比较查询和列的版本，保留数据源引用，并选择报表何时采用更新后的定义。</p>
               <span aria-hidden="true">→</span>
             </a>
           
             <a class="related-card" href="/zh/product/controlled-analytics/">
               <span class="related-card__eyebrow ">受控分析</span>
-              <strong>固定数据契约。治理执行。解释结果。</strong>
-              <p>受控 Analytics 将报告绑定到准确 DatasetVersion，在服务器上验证 Query Context，并保留受支持结果背后的权限、RLS、筛选器、绑定和制品上下文。</p>
+              <strong>展示数字，解释背后的结果。</strong>
+              <p>从已接受的数据集版本创建报表和图表。探索维度和筛选条件；有人询问结果如何得出时，可以返回已保存的报表定义和执行上下文。</p>
               <span aria-hidden="true">→</span>
             </a>
           
@@ -1194,8 +1224,8 @@
           
             <a class="related-card" href="/zh/product/assurance/">
               <span class="related-card__eyebrow brand-case">advanexus Assurance</span>
-              <strong>通过结果背后的可用证据调查受支持的结果。</strong>
-              <p>Assurance 是感知权限、针对读取优化的层，用于探索受支持的运营证据。它不会取代权威来源，也不会编造从未记录的历史。</p>
+              <strong>看清结果背后的依据。</strong>
+              <p>从结果、执行或已记录事件出发，追踪可用版本和关联，检查支撑证据，并在决定下一步前了解哪些内容尚未核实。</p>
               <span aria-hidden="true">→</span>
             </a>
           
@@ -1226,12 +1256,12 @@
     <div class="content-section__body accordion">
       
       <details class="accordion__item">
-        <summary>结果能否在以后复现并解释？</summary>
+        <summary><span>结果能否在以后复现并解释？</span><svg class="icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h12M10 4v12"/></svg></summary>
         <div class="accordion__answer"><p>在能力支持的范围内，advanexus 保留精确契约与执行上下文，并评估明确的可复现标准。它报告可复现、部分可复现、不可复现或未评估，而不是承诺通用重放。</p></div>
       </details>
       
       <details class="accordion__item">
-        <summary>advanexus 保留哪些证据？</summary>
+        <summary><span>advanexus 保留哪些证据？</span><svg class="icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h12M10 4v12"/></svg></summary>
         <div class="accordion__answer"><p>根据受支持模块，系统可以连接主体、版本、执行、质量决定、结果、工件、Findings、Cases 以及可通过校验和验证的 Evidence Packages。来源强度与缺失证据保持可见；证据包不会自动成为数字签名、WORM 记录或法律结论。</p></div>
       </details>
       
@@ -1239,6 +1269,8 @@
   </div>
 </section>
 
+
+  
 
   </main>
 

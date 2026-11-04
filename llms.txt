@@ -1,10 +1,10 @@
 # advanexus
 
-> The control and evidence system for enterprise execution across existing systems, data flows, automation and AI-assisted work.
+> Existing systems. Less manual work between them.
 
-advanexus connects the data, versions, policies, approvals, executions, outcomes and recovery context behind critical enterprise work. It adds a continuous chain of control and evidence across supported systems without requiring the organisation to replace the systems it already trusts.
+advanexus connects data preparation and transfer, business checks and analysis. Get a result that can be explained, reused and taken into the next step, without replacing your existing systems.
 
-The name combines advance—moving forward—with nexus—the point where systems, data, people and decisions connect. advanexus turns that idea into a control and evidence system for critical work that crosses the enterprise.
+Preparation, checks, analysis and follow-up often sit in separate tools. advanexus connects these steps around the same result, with its definitions, versions and available execution records. Existing systems keep their roles; teams get a reusable way to work across them.
 
 ## Brand meaning
 
@@ -12,12 +12,14 @@ Progress that stays connected. advanexus brings advance and nexus together: movi
 
 ## Business problems
 
-- Too many systems. No clear answer. Run a cross-system business check and review the combined result, with source statuses and gaps visible.
-- The transfer finished. Is the data right? Move data, compare source and target, and review differences before accepting the result.
-- Another file. The same manual work. Turn supported files into managed data and repeatable processing steps.
-- The report changed. Why? Review the data, saved definitions and available execution records behind the result.
-- A review starts another search for evidence. Find the available checks, execution records and evidence behind a result or exception.
-- AI needs access. Not access to everything. Let supported AI assistants use selected capabilities and permitted information.
+- Why does the report not reconcile? Compare the prepared report with operational records and the general ledger. Identify the items behind a difference instead of rebuilding the comparison by hand.
+- What happened to this payment? Connect channel, processing, ledger and settlement records. See which stages are confirmed and where a record or explanation is still missing.
+- What prevents this delivery from closing? Bring together transport, warehouse and receipt records. Identify the missing step or document holding up the next action.
+- Was this request really abandoned? Compare application, branch and request records. Separate completed, cancelled, open and unresolved journeys before drawing a conclusion.
+- Who qualifies for this benefit? Connect membership, previous benefit use and contact rules. Separate candidates, exclusions and cases needing review, with a reason for each.
+- Which exception needs attention? Compare the recorded event with the applicable rule and approval. Distinguish explained differences from exceptions still requiring investigation.
+- The file arrived. Is it ready to use? Check partner data against the expected structure and quality rules. Prepare usable data for analysis or transfer, and identify what needs correction.
+- The transfer finished. Was it correct? Compare source and destination against the agreed mapping. Review record and value differences before accepting the transferred data.
 
 ## Core use cases
 
@@ -30,8 +32,6 @@ Progress that stays connected. advanexus brings advance and nexus together: movi
 
 ## Best fit and value unit
 
-- It is relevant to leaders accountable for critical data and operational outcomes: CIO and COO organisations, data and platform leaders, finance and analytics owners, risk and compliance, audit, resilience, transformation and controlled AI programmes. A bounded pilot begins with one process they already need to accept or explain.
-- Licensed product capabilities, agreed usage capacity and standard product support for the selected profile. Excludes VAT. Outside the licence: Cloud, infrastructure preparation and operation, implementation, custom development, integrator services and external provider consumption.
 - Capacity defines licensed product use. It is not a commitment to build every connection or business flow.
 - Tenant: One isolated organisational and data boundary within the agreed software scope.
 - Registered system connection: One configured source or target connection. Building and adapting the integration is separate.
@@ -53,7 +53,6 @@ Progress that stays connected. advanexus brings advance and nexus together: movi
 
 ## Decision guidance
 
-- Choose one process, migration, report, recovery or AI-assisted action whose result matters. Define its systems, owners, rules, approvals, failure path, evidence obligation and pilot measures before discussing a broad rollout. Existing users can continue through Open live platform.
 - A migration must be accepted, not merely declared complete: It connects the accepted baseline, supported mappings, persisted execution, reconciliation, exceptions, cutover or recovery decision and available evidence around the move.
 - A recurring figure or report from several sources: It turns different inputs into reusable tables, retains dataset and report versions and binds discussion and review context to the exact result.
 - An error must be found before delivery: A critical business check can stop the same supported flow, while the reason, owner and corrective discussion remain with that execution.
@@ -61,39 +60,47 @@ Progress that stays connected. advanexus brings advance and nexus together: movi
 - Audit or an incident needs a fast, supported answer: Assurance Center leads from the question to the relevant result or execution, its version, check, owner and a review package in a known scope.
 - AI should accelerate work without becoming the authority: Registered AI assistance uses permitted context, separates proposal from deterministic execution and keeps policy, human authority, canonical result and commentary with the object.
 
-## Explicit product boundaries
+## Product questions and boundaries
 
+- What is advanexus? advanexus is the control and evidence system for critical enterprise execution across supported systems, data flows, automation and registered AI-assisted actions. It connects context, rules, authority, execution, outcome, recovery and available evidence in one scoped operating model.
+- What business problem does advanexus solve? It solves the control gap that appears when one important result crosses several platforms and teams. Instead of reconstructing which data, version, rule, approval and action produced the outcome, advanexus keeps those supported references connected while work happens.
+- Who buys advanexus? It is relevant to leaders accountable for critical data and operational outcomes: CIO and COO organisations, data and platform leaders, finance and analytics owners, risk and compliance, audit, resilience, transformation and controlled AI programmes. A bounded pilot begins with one process they already need to accept or explain.
 - Does advanexus replace systems of record, a warehouse, orchestrator, BI tool or notebook? No. Authoritative transactions, storage, compute and specialist work remain in the systems that already perform them. advanexus adds a shared control and evidence path across supported hand-offs and also provides controlled modules where that path is needed.
 - How does advanexus control AI-assisted actions? A model may explain permitted context or propose a registered action. Deterministic services validate, policy and people authorise state-changing work, and the canonical service records what actually happened. advanexus is not an unrestricted autonomous agent or a second authorisation system.
+- What is AI Migration Assurance? It is a controlled use case around an accepted migration path: establish the baseline, retain mappings and known exceptions, execute through supported connectors, reconcile the business result, record approval or recovery decisions and preserve available evidence for review.
 - Can advanexus migrate any SaaS, ERP, cloud or AI provider automatically? No universal one-click migration is claimed. Source and target support, semantic and permission mapping, transformation, reconciliation, cutover and recovery depend on the exact connector, data, workflow and accepted deployment. advanexus makes supported scope and gaps explicit.
 - What evidence does advanexus preserve? Depending on the supported module, the system can connect actors, versions, runs, quality decisions, outcomes, artifacts, findings, cases and checksum-verifiable Evidence Packages. Source strength and missing evidence remain visible; a package is not automatically a digital signature, WORM record or legal conclusion.
+- Can a result be reproduced and explained later? advanexus preserves exact contracts and execution context where the capability supports them, then assesses explicit reproducibility criteria. It reports reproducible, partially reproducible, not reproducible or not assessed rather than promising universal replay.
 - Do all connectors support the same operations? No. Source, driver and deployment contracts decide metadata, preview, query, transfer, write, quality and analytics behaviour for the exact connector environment.
+- Where does customer data live? Deployment and job policy decide the path. Supported STANDARD work may use controlled spool, EPHEMERAL_STAGING requires verified deletion before success, and NO_STAGING permits only a content-free source-to-target path with bounded in-memory pages. Connector and production acceptance still apply.
 - Does advanexus guarantee regulatory compliance? No. The product can support controlled execution, human oversight, traceability, investigation and evidence obligations. Applicability, legal interpretation, retention, signing, certification and regulator acceptance remain specific to the organisation and implemented control environment.
 - Does a deployment become production-ready automatically? No. Production sign-off requires the exact revision, immutable images, target infrastructure and recorded migration, authorisation, recovery, storage, connector and operational acceptance.
+- How does pricing work? All platform modules, including Intelligence. Capacity and environments according to the agreed profile. Product support according to the agreed profile. Excludes VAT. Outside the licence: Cloud, infrastructure preparation and operation, implementation, custom development, integrator services and external provider consumption.
+- How should an organisation start? Choose one process, migration, report, recovery or AI-assisted action whose result matters. Define its systems, owners, rules, approvals, failure path, evidence obligation and pilot measures before discussing a broad rollout. Existing users can continue through Open demo.
 
 ## Authoritative public pages
 
 The pages below are the authoritative public sources for current capabilities, boundaries, trust information and engagement terms.
 
-- [Run your data operations. Check the results. Know what happened.](https://www.advanexus.com/): advanexus brings data movement, processing, business checks and analytics into one platform, working with the systems you already use. Automate repeatable work, review exceptions and give AI controlled access.
+- [Existing systems. Less manual work between them.](https://www.advanexus.com/): advanexus connects data preparation and transfer, business checks and analysis. Get a result that can be explained, reused and taken into the next step, without replacing your existing systems.
 - [Critical product information should be perceivable and operable.](https://www.advanexus.com/accessibility/): Last reviewed 16 July 2026. The site is designed around semantic HTML, keyboard access, visible focus, responsive reading and reduced motion; final conformance requires testing of the exact frozen build.
-- [Keep the systems you trust. Make critical execution controllable and provable.](https://www.advanexus.com/advanexus/): advanexus is the control and evidence system across supported data flows, automation and registered AI-assisted actions. It connects the exact context, rule, authority, execution, outcome and recovery path without becoming another system of record. Start with one process or migration whose result the business must accept and explain.
-- [Start with a clear purpose and the right amount of context.](https://www.advanexus.com/contact/): The initial static site uses direct email rather than an embedded form backend. Send only the information needed to route the conversation and do not include credentials, production data or sensitive records.
+- [Existing systems. A connected path from data to result.](https://www.advanexus.com/advanexus/): A report, delivery or payment can depend on several systems. advanexus brings the supported data work into one flow: prepare the inputs, check differences, create the result and keep the context needed to use it again.
+- [Start with a clear purpose and the right amount of context.](https://www.advanexus.com/contact/): Based in Ljubljana, Slovenia, advanexus starts with your process and the result you need. Get in touch to discuss the platform, a demonstration or a focused pilot. Please do not send credentials, production data or sensitive records.
 - [Bring one critical data flow. Start with operational reality.](https://www.advanexus.com/demo-request/): The first conversation is not a generic feature tour. It maps the systems, hand-offs, owners, permissions, quality gates, delivery obligations and evidence requirements behind one important outcome.
 - [Direct answers for the person deciding whether advanexus fits.](https://www.advanexus.com/faqs/): Start with the business question. Each answer then states the product boundary so a buyer can distinguish current capability, accepted deployment scope and future direction.
-- [Choose a situation you recognise](https://www.advanexus.com/platform/world/): advanexus is the control and evidence system across supported data flows, automation and registered AI-assisted actions. It connects the exact context, rule, authority, execution, outcome and recovery path without becoming another system of record. Start with one process or migration whose result the business must accept and explain.
-- [A software licence with a clear scope.](https://www.advanexus.com/pricing/): Choose the product capabilities and capacity you need. The annual subscription includes product support for the selected profile. Infrastructure, integration and custom development are separate.
-- [advanexus · Product](https://www.advanexus.com/product/): advanexus is a platform for connecting and processing data from your systems and files. Prepare data, run business checks and build reports, with clear access rules and a record of each execution.
-- [Controlled Python work in a project-scoped runtime.](https://www.advanexus.com/product/anpy/): ANpy gives Python analysis a known environment, notebook revision, kernel lifecycle and CellRun record while keeping production isolation and package policy under platform control.
-- [Investigate a supported outcome through the available evidence behind it.](https://www.advanexus.com/product/assurance/): Assurance is a permission-aware, read-optimised layer for exploring supported operational evidence. It does not replace the canonical source or manufacture history that was never recorded.
-- [Pin the data contract. Govern the execution. Explain the result.](https://www.advanexus.com/product/controlled-analytics/): Controlled Analytics binds a report to exact DatasetVersions, validates Query Context on the server and retains the permission, RLS, filter, binding and artifact context behind a supported result.
-- [Connect, inspect, transform and execute with explicit scope and run context.](https://www.advanexus.com/product/data-operations/): Move from heterogeneous Sources and controlled files to managed tables, quality checks and persisted execution history without flattening all connectors into the same query or write model.
-- [Make quality part of execution, not a document after it.](https://www.advanexus.com/product/data-quality/): Data Quality turns source-oriented expectations into repeatable SQL assertions with a clear pass condition, persisted QualityRun and bounded failure evidence.
-- [Turn data definitions into versioned assets with explicit lineage.](https://www.advanexus.com/product/governed-datasets/): Dataset separates exploratory SQL from a reusable data contract. Its stable identity, immutable versions and semantic metadata create a controlled foundation for reports without hiding the source lineage.
+- [Choose a situation you recognise](https://www.advanexus.com/platform/world/): A report, delivery or payment can depend on several systems. advanexus brings the supported data work into one flow: prepare the inputs, check differences, create the result and keep the context needed to use it again.
+- [A software licence with a clear scope.](https://www.advanexus.com/pricing/): The licence includes all platform modules and Intelligence. Profiles differ in capacity, environments and product support, not in access to modules. Outside the licence: Cloud, infrastructure preparation and operation, implementation, custom development, integrator services and external provider consumption.
+- [Your systems stay. The work between them comes together.](https://www.advanexus.com/product/): Bring data from databases and files into a reusable workflow: prepare it, move it, check it and use it for analysis. Keep the relevant versions and execution records with the result, so the next question does not start another search.
+- [Explore deeper questions with Python in the same project.](https://www.advanexus.com/product/anpy/): Use notebooks for analysis with selected file inputs and approved packages. Keep the notebook revision, environment and execution record together so the work can be reviewed in context.
+- [See what stands behind a result.](https://www.advanexus.com/product/assurance/): Start from a result, execution or recorded event. Follow its available versions and relationships, inspect supporting evidence and see what remains unverified before deciding the next step.
+- [Show the numbers. Explain the result behind them.](https://www.advanexus.com/product/controlled-analytics/): Build reports and charts from an accepted dataset version. Explore dimensions and filters, then return to the saved report definition and run context when someone asks how a result was obtained.
+- [Turn data from separate sources into repeatable work.](https://www.advanexus.com/product/data-operations/): Explore connected databases, prepare files and tables, and arrange supported transfers and quality checks. Keep the definition, run status and recorded outcome together when the work is repeated.
+- [Find data exceptions before the next step.](https://www.advanexus.com/product/data-quality/): Define what acceptable data means, run repeatable checks and inspect recorded failures. Use supported workflow gates to stop downstream work when a required check fails.
+- [Prepare a dataset once. Control how its definition changes.](https://www.advanexus.com/product/governed-datasets/): Create a reusable dataset for analysis and reporting. Compare versions of its query and columns, keep the source reference, and choose when a report adopts a changed definition.
 - [Connect heterogeneous systems through explicit capability contracts.](https://www.advanexus.com/product/integrations/): A connector name is only the beginning. advanexus resolves which discovery, read, transfer, write, quality and analytics operations the exact driver and deployment can support safely.
-- [AI assistance inside the platform's permission, policy and evidence boundaries.](https://www.advanexus.com/product/intelligence/): Users describe a goal in natural language. Intelligence assembles only allowed context, selects a registered skill and lets deterministic platform services retain authority over validation and execution.
-- [Your AI assistant. Your business data. Your rules.](https://www.advanexus.com/product/mcp/): Connect ChatGPT, Claude or another supported MCP client to approved advanexus resources. Ask business questions, run approved Monitoring checks and read permitted results, with access controls and a record of each call.
-- [Investigate across systems without losing the source of the answer.](https://www.advanexus.com/product/monitoring/): Publish a reviewed project template, then run it with named inputs to see a joined result and the status of each source where Monitoring is enabled.
+- [Turn a business question into a useful next step.](https://www.advanexus.com/product/intelligence/): Ask about the selected data or task in your own words. Get explanations, SQL drafts and proposed next steps based on permitted context, while platform checks govern what can be executed.
+- [Ask your AI assistant about approved business information.](https://www.advanexus.com/product/mcp/): Connect a supported AI assistant to selected project resources. Ask questions, run approved checks and read permitted results, with access choices and a record of each call.
+- [Check one business situation across multiple systems.](https://www.advanexus.com/product/monitoring/): Run a reviewed check with an order, payment or another agreed identifier. See the combined result, which sources responded and the saved run the team can return to.
 - [How advanexus works](https://www.advanexus.com/product/system-map/): From source and execution to an evidence-backed business outcome.
 - [Practical explanations for decisions that depend on data context.](https://www.advanexus.com/resources/): Resources turn the platform contract into clear operating guidance. They distinguish current capability, environment dependency and planned work rather than publishing generic data-governance commentary.
 - [What users can rely on now, without an implementation diary.](https://www.advanexus.com/resources/changelog/): This surface summarises the current user contract. It deliberately omits commit history, daily engineering activity, private deployment data and unverified roadmap promises.
@@ -127,4 +134,25 @@ The pages below are the authoritative public sources for current capabilities, b
 - [Find what is holding up a delivery.](https://www.advanexus.com/use-cases/industries/logistics-supply-chain/): Transport, warehouse, document and invoice updates arrive from different teams and systems.
 - [Bring departmental information into one review.](https://www.advanexus.com/use-cases/industries/public-sector/): Teams collect submissions and records from several departments before preparing a shared report.
 - [Follow the order through to the bill.](https://www.advanexus.com/use-cases/industries/telecommunications/): Sales, activation and billing can disagree about the same service.
-- [Progress needs connection. Enterprise change needs proof.](https://www.advanexus.com/why-advanexus/): The name combines advance—moving forward—with nexus—the point where systems, data, people and decisions connect. advanexus turns that idea into a control and evidence system for critical work that crosses the enterprise.
+- [Keep the whole job connected, not just the data.](https://www.advanexus.com/why-advanexus/): Preparation, checks, analysis and follow-up often sit in separate tools. advanexus connects these steps around the same result, with its definitions, versions and available execution records. Existing systems keep their roles; teams get a reusable way to work across them.
+
+## Available website languages
+
+- English (UK) (en-GB): https://www.advanexus.com/
+- English (US) (en-US): https://www.advanexus.com/us/
+- Deutsch (de): https://www.advanexus.com/de/
+- Slovenščina (sl): https://www.advanexus.com/sl/
+- Srpski (sr-Latn): https://www.advanexus.com/sr/
+- Magyar (hu): https://www.advanexus.com/hu/
+- العربية (ar): https://www.advanexus.com/ar/
+- 简体中文 (zh-Hans): https://www.advanexus.com/zh/
+- 日本語 (ja): https://www.advanexus.com/ja/
+- Svenska (sv): https://www.advanexus.com/sv/
+- Español (es): https://www.advanexus.com/es/
+- Русский (ru): https://www.advanexus.com/ru/
+- हिन्दी (hi): https://www.advanexus.com/hi/
+- Português (pt-PT): https://www.advanexus.com/pt/
+- Suomi (fi-FI): https://www.advanexus.com/fi/
+- Norsk bokmål (nb-NO): https://www.advanexus.com/no/
+- Nederlands (nl-NL): https://www.advanexus.com/nl/
+- Dansk (da-DK): https://www.advanexus.com/da/

@@ -60,6 +60,11 @@
     "model_provider_consumption_separately_scoped",
     "tax_travel_and_third_party_costs_excluded"
   ]);
+  const INCLUDED_SOFTWARE_CAPABILITIES = Object.freeze({
+    core_data_operations: "available", controlled_analytics: "extended",
+    anpy: "standard", assurance: "tenant_and_system",
+    intelligence: "platform_access", saml_sso: "subject_to_acceptance"
+  });
 
   function fail(message) {
     throw new TypeError(message);
@@ -76,6 +81,9 @@
     if (catalog.pricing_scope !== "software_only") {
       fail("Pricing catalog must use software_only scope");
     }
+    if (catalog.software_inclusion !== "all_supported_platform_modules") {
+      fail("Every licence must include all supported software modules");
+    }
     const retiredCatalogFields = [
       "engagement_ranges", "support_calculation_basis", "support_tiers",
       "deployment_options", "implementation", "professional_services"
@@ -90,6 +98,12 @@
     if (ids.join("|") !== PLAN_IDS.join("|")) {
       fail("Pricing catalog plan order is invalid");
     }
+    if (catalog.plans.some((plan) => !isRecord(plan.capabilities) ||
+        Object.entries(INCLUDED_SOFTWARE_CAPABILITIES).some(
+          ([key, value]) => plan.capabilities[key] !== value
+        ))) {
+      fail("Every licence must include the same software modules");
+    }
     const retiredPlanFields = [
       "implementation_eur", "implementation_kind",
       "managed_deployment_eur", "managed_deployment_kind"
@@ -101,6 +115,13 @@
         Object.keys(catalog.annual_add_ons).sort().join("|") !==
           ["additional_environment", "anpy", "intelligence", "retention"].join("|")) {
       fail("annual_add_ons must contain software options only");
+    }
+    const intelligenceOptions = catalog.annual_add_ons.intelligence;
+    if (!Array.isArray(intelligenceOptions) || intelligenceOptions.length !== 1 ||
+        intelligenceOptions[0].option_id !== "platform_access" ||
+        intelligenceOptions[0].annual_software_eur !== 0 ||
+        intelligenceOptions[0].availability !== "included_in_every_plan") {
+      fail("Intelligence software access must be included in every licence without a surcharge");
     }
     if (
       !isRecord(catalog.calculation_limits) ||
@@ -339,9 +360,13 @@
       tenants: 1, projects: 1, users: 1,
       production_environments: 1, non_production_environments: 1,
       connectors: 1, governed_flows: 1, annual_executions: 0,
-      retention_months: 3, intelligence_option_id: "none", anpy_option_id: "shared",
+      retention_months: 3, intelligence_option_id: "platform_access", anpy_option_id: "shared",
       ...Object.fromEntries(Object.entries(source).filter(([field]) => SHARE_FIELDS.includes(field)))
     };
+    // Old saved/share scenarios cannot restore the retired Intelligence fee.
+    if (["none", "software_addon"].includes(scenario.intelligence_option_id)) {
+      scenario.intelligence_option_id = "platform_access";
+    }
     findById(catalog.plans, "plan_id", scenario.plan_id);
     findById(catalog.term_discounts, "term_months", scenario.term_months);
     findById(catalog.annual_add_ons.intelligence, "option_id", scenario.intelligence_option_id);
@@ -380,12 +405,6 @@
         return;
       }
       const capacity = plan.capacity;
-      if (
-        scenario.intelligence_option_id === "platform_access" &&
-        plan.capabilities.intelligence !== "platform_access"
-      ) {
-        return;
-      }
       if (scenario.tenants > capacity.tenants) {
         return;
       }
@@ -440,11 +459,6 @@
     const scenario = normalizeScenario(catalog, scenarioSource);
     const plan = findById(catalog.plans, "plan_id", scenario.plan_id);
     const term = findById(catalog.term_discounts, "term_months", scenario.term_months);
-    const intelligence = findById(
-      catalog.annual_add_ons.intelligence,
-      "option_id",
-      scenario.intelligence_option_id
-    );
     const anpy = findById(
       catalog.annual_add_ons.anpy,
       "option_id",
@@ -535,23 +549,6 @@
           price_kind: retention.price_kind
         });
       }
-    }
-
-    if (intelligence.annual_software_eur) {
-      annualSoftwareItems.push({
-        code: `intelligence_${intelligence.option_id}`,
-        amount_eur: intelligence.annual_software_eur,
-        price_kind: intelligence.price_kind
-      });
-    }
-    if (
-      intelligence.option_id === "platform_access" &&
-      plan.capabilities.intelligence !== "platform_access"
-    ) {
-      reviewReasons.push("intelligence_platform_access_not_in_selected_plan");
-    }
-    if (intelligence.option_id === "software_addon") {
-      excludedCosts.push("model_provider_consumption_separately_scoped");
     }
 
     if (anpy.price_kind === "custom") {

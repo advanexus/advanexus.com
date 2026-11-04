@@ -78,14 +78,16 @@
   <meta name="twitter:image" content="https://www.advanexus.com/assets/dist/icons/social-card.b89404f2b760.png">
   <meta name="twitter:image:alt" content="advanexus — styring og dokumentasjon av virksomhetsutførelse på tvers av systemer, data og AI-assistert arbeid.">
   <link rel="preload" href="/assets/dist/fonts/SpaceGrotesk-variable.8e085aa43809.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/dist/css/site.868f77dd0a2b.css">
+  <link rel="stylesheet" href="/assets/dist/css/site.8cc86315ce08.css">
   
-  
+  <link rel="stylesheet" href="/assets/dist/css/buyer-journey.06cc2f3c003a.css">
 
+  <link rel="stylesheet" href="/assets/dist/css/site-experience.01f8670497b3.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://www.advanexus.com/no/trust/deployment/#webpage","url":"https://www.advanexus.com/no/trust/deployment/","name":"advanexus driftssetting | Kjøringsgrenser og produksjonsgodkjenning","description":"Se gjennom gjeldende container-runtime, målbildet for AWS og akseptdokumentasjonen som kreves for produksjonsgodkjenning.","inLanguage":"nb-NO","isPartOf":{"@id":"https://www.advanexus.com/#website"},"publisher":{"@id":"https://www.advanexus.com/#organization"},"about":{"@id":"https://www.advanexus.com/no/trust/#topic-trust"},"dateModified":"2026-07-30","breadcrumb":{"@id":"https://www.advanexus.com/no/trust/deployment/#breadcrumb"}},{"@type":"DefinedTerm","@id":"https://www.advanexus.com/no/trust/#topic-trust","name":"Arkitektur, sikkerhet og tillit","description":"Offentlige kontrakter for arkitektur, sikkerhet, dokumentasjon, driftssetting og funksjonsstatus.","url":"https://www.advanexus.com/no/trust/"},{"@type":"BreadcrumbList","@id":"https://www.advanexus.com/no/trust/deployment/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Start","item":"https://www.advanexus.com/no/"},{"@type":"ListItem","position":2,"name":"Tillitssenter","item":"https://www.advanexus.com/no/trust/"},{"@type":"ListItem","position":3,"name":"Driftssetting","item":"https://www.advanexus.com/no/trust/deployment/"}]}]}</script>
   <script src="/assets/dist/js/typing.d72c71ee9cf4.js" defer></script>
   <script src="/assets/dist/js/form-safety.3b307b166fd8.js" defer></script>
   <script src="/assets/dist/js/main.8566869dc07e.js" defer></script>
+  <script src="/assets/dist/js/site-experience.63f342a72b88.js" defer></script>
   
 </head>
 <body data-page-id="trust-deployment" data-page-kind="technical">
@@ -119,7 +121,7 @@
                 <svg class="icon icon--chevron" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="m5 7.5 5 5 5-5"/></svg>
               </summary>
               <div class="nav-group__panel nav-group__panel--buyer">
-                <p class="nav-group__intro">advanexus er en plattform for å koble sammen og behandle data fra systemene og filene deres. Klargjør data, kjør forretningskontroller og lag rapporter med tydelige tilgangsregler og registrering av hver kjøring.</p>
+                <p class="nav-group__intro">Koble data fra databaser og filer i en gjenbrukbar arbeidsflyt: klargjør, overfør, kontroller og analyser. Relevante versjoner og kjøringsopplysninger følger resultatet, slik at neste spørsmål ikke starter et nytt søk.</p>
                 <div class="nav-group__columns nav-group__columns--4">
                   
                     <section class="nav-group__column" aria-label="Utforsk produktet">
@@ -803,6 +805,29 @@
   </div>
     </div>
   </section>
+  
+  
+
+<nav class="page-compass" aria-label="På denne siden" data-page-compass>
+  <div class="shell page-compass__inner">
+    
+    <span class="page-compass__label">På denne siden</span>
+    
+    <ol role="list">
+      
+      <li><a href="#section-1-title"><span aria-hidden="true">01</span>Gjeldende kjøretid gjør grensene for arbeidsbelastning konkrete.</a></li>
+      
+      <li><a href="#section-2-title"><span aria-hidden="true">02</span>Managed AWS Services er en målarkitektur.</a></li>
+      
+      <li><a href="#section-3-title"><span aria-hidden="true">03</span>Aksept omfatter feil, ikke bare oppstart.</a></li>
+      
+      <li><a href="#section-4-title"><span aria-hidden="true">04</span>Offentlig status kan ikke sertifisere et kundemiljø.</a></li>
+      
+    </ol>
+    
+  </div>
+</nav>
+
 
   
   
@@ -942,6 +967,7 @@
   
   
   
+  
     <section class="related-pages" aria-labelledby="related-title">
       <div class="shell">
         <div class="related-pages__heading">
@@ -1000,12 +1026,12 @@
     <div class="content-section__body accordion">
       
       <details class="accordion__item">
-        <summary>Er enhver implementering automatisk produksjonsklar?</summary>
+        <summary><span>Er enhver implementering automatisk produksjonsklar?</span><svg class="icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h12M10 4v12"/></svg></summary>
         <div class="accordion__answer"><p>Nei. Aksept for produksjon krever en eksakt revisjon, uforanderlige containerbilder, målinfrastruktur og registrert aksept for migrering, autorisasjon, gjenoppretting, lagring, tilkoblinger og drift.</p></div>
       </details>
       
       <details class="accordion__item">
-        <summary>Hvor befinner kundens data seg?</summary>
+        <summary><span>Hvor befinner kundens data seg?</span><svg class="icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h12M10 4v12"/></svg></summary>
         <div class="accordion__answer"><p>Implementerings- og Job-policy avgjør veien. Støttet STANDARD-arbeid kan bruke en kontrollert spool, EPHEMERAL_STAGING krever verifisert sletting før suksess, og NO_STAGING tillater bare en innholdsfri vei fra kilde til mål med avgrensede sider i minnet. Connector- og produksjonsaksept gjelder fortsatt.</p></div>
       </details>
       
@@ -1013,6 +1039,8 @@
   </div>
 </section>
 
+
+  
 
   </main>
 

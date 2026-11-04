@@ -1,4 +1,4 @@
-@font-face{font-family:Space Grotesk;src:url('/assets/fonts/SpaceGrotesk-variable.woff2') format('woff2');font-style:normal;font-weight:300 700;font-display:swap}
+@font-face{font-family:Space Grotesk;src:url('/assets/dist/fonts/SpaceGrotesk-variable.8e085aa43809.woff2') format('woff2');font-style:normal;font-weight:300 700;font-display:swap}
 
 :root{--paper:#151c24;--ink:#f4f4ee;--muted:#aebac4;--line:#384550;--wash:#202c36;--teal:#54debf;--accent:#70e5cb;--tint:#183932;--amber:#efb66e;color-scheme:dark}
 
@@ -157,6 +157,11 @@ to{opacity:1;transform:none}
 .flow-pair li>strong{font-size:16px;line-height:1.35;font-weight:400;display:block}
 .workflow-comparison figcaption{margin-top:15px}
 .flow-pair li{animation:message-focus 15s linear infinite;animation-delay:calc(var(--step)*3s);animation-play-state:paused}
+.flow-pair li:nth-child(1){--step:0}
+.flow-pair li:nth-child(2){--step:1}
+.flow-pair li:nth-child(3){--step:2}
+.flow-pair li:nth-child(4){--step:3}
+.flow-pair li:nth-child(5){--step:4}
 .is-active .flow-pair li{animation-play-state:running}
 .workflow-comparison[data-flow-paused=true] li{animation-play-state:paused}
 .flow-prepared{--focus-bg:var(--tint);--focus-border:var(--teal)}

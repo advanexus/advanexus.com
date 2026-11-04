@@ -1,6 +1,6 @@
 @layer pages {
   /*
-   * Advanexus World is a spatial business experience. WebGL owns geography,
+   * advanexus World is a spatial business experience. WebGL owns geography,
    * camera, atmosphere and spatial signals. The DOM remains responsible for
    * meaning, decisions, authority, evidence and accessible fallback content.
    */
@@ -5583,7 +5583,7 @@
 }
 
 /*
- * Advanexus World focused workspace.
+ * advanexus World focused workspace.
  *
  * The default screen is the business system itself. Long explanatory copy stays
  * available through Text view and no-JS fallback instead of competing with the

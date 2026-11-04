@@ -5,22 +5,53 @@
     const PI = Math.PI, TAU = PI * 2, clamp = (v, a, b) => Math.max(a, Math.min(b, v));
     const mix = (a, b, t) => a + (b - a) * t, smooth = (a, b, v) => { const x = clamp((v - a) / (b - a), 0, 1); return x * x * (3 - 2 * x); };
     const STORY = Object.freeze({ cycle: 7, question: .55, thinking: 2.55, answer: 3.25, visual: 4, fade: 6.72 });
+    const CONNECTED_STORY = Object.freeze({ cycle: 10.8, question: .8, gather: 1.65, send: 2.3, thinking: 4.35, answer: 5.15, visual: 5.6, fade: 10.4 });
     const LABEL_OVERLAY_WIDTH = 800;
-    const FLOW_STAGES = { input: [0, 8], control: [8, 10], context: [10, 13], output: [13, 16], result: [21, 26] };
+    const FLOW_STAGES = { question: [1, 8], input: [0, 8], control: [8, 10], context: [10, 13], output: [13, 16], result: [21, 26] };
     const STORY_BEATS = [[0, 0], [STORY.question, 5], [STORY.thinking, 16], [STORY.answer, 20], [STORY.visual, 26], [STORY.cycle, 26]];
-    function storyPhase(cycle) {
-        for (let i = 1; i < STORY_BEATS.length; i++) {
-            const [end, value] = STORY_BEATS[i];
+    const CONNECTED_BEATS = [[0, 0], [CONNECTED_STORY.send, 1], [3.05, 8], [3.55, 10], [3.9, 13], [CONNECTED_STORY.thinking, 16], [CONNECTED_STORY.answer, 20], [CONNECTED_STORY.visual, 26], [CONNECTED_STORY.cycle, 26]];
+    const conversationSegmenter = typeof Intl.Segmenter === 'function' ? new Intl.Segmenter(undefined, { granularity: 'grapheme' }) : null;
+    const conversationCopy = new Map();
+    function conversationUnits(text) {
+        const copy = String(text).trim().replace(/\s+/g, ' ');
+        if (!conversationCopy.has(copy)) {
+            // Older browsers reveal whole words rather than cut a combining sequence.
+            const units = conversationSegmenter ? Array.from(conversationSegmenter.segment(copy), item => item.segment) : (copy.match(/\S+| /g) || []);
+            if (conversationCopy.size >= 12) conversationCopy.delete(conversationCopy.keys().next().value);
+            conversationCopy.set(copy, units);
+        }
+        return conversationCopy.get(copy);
+    }
+    function conversationLines(ctx, units, maxWidth) {
+        const lines = [];
+        let start = 0, cursor = 0, lastSpace = -1;
+        while (cursor < units.length) {
+            if (units[cursor] === ' ') lastSpace = cursor;
+            if (cursor > start && ctx.measureText(units.slice(start, cursor + 1).join('')).width > maxWidth) {
+                const end = lastSpace >= start ? lastSpace : cursor;
+                lines.push({ units: units.slice(start, end), start });
+                start = end;
+                while (units[start] === ' ') start++;
+                cursor = start;
+                lastSpace = -1;
+            } else cursor++;
+        }
+        if (start < units.length) lines.push({ units: units.slice(start), start });
+        return lines;
+    }
+    function storyPhase(cycle, beats = STORY_BEATS) {
+        for (let i = 1; i < beats.length; i++) {
+            const [end, value] = beats[i];
             if (cycle <= end) {
-                const [start, previous] = STORY_BEATS[i - 1];
+                const [start, previous] = beats[i - 1];
                 return mix(previous, value, (cycle - start) / (end - start));
             }
         }
         return 26;
     }
-    function phaseTime(phase) {
-        for (let i = 1; i < STORY_BEATS.length; i++) {
-            const [end, value] = STORY_BEATS[i], [start, previous] = STORY_BEATS[i - 1];
+    function phaseTime(phase, beats = STORY_BEATS) {
+        for (let i = 1; i < beats.length; i++) {
+            const [end, value] = beats[i], [start, previous] = beats[i - 1];
             if (phase <= value) return mix(start, end, (phase - previous) / (value - previous));
         }
         return STORY.visual;
@@ -273,6 +304,8 @@
         constructor(root, config = {}) {
             this.root = root;
             this.config = Object.assign({ accent: '#33e6a7', autoPlay: true, autoRotate: true, pixelRatio: 1.75, glow: .22, logoUrl: '', labels: ['Sources', 'advanexus', 'AI / LLM', 'AI agents'] }, config);
+            this.story = this.config.prominentConversation ? CONNECTED_STORY : STORY;
+            this.storyBeats = this.config.prominentConversation ? CONNECTED_BEATS : STORY_BEATS;
             this.scenario = this.config.scenario;
             this.accent = rgb(this.config.accent);
             this.root.style.setProperty('--ax-accent', this.config.accent);
@@ -308,7 +341,7 @@
             this.lastPinch = 0;
             this.motion = matchMedia('(prefers-reduced-motion: reduce)');
             this.reduced = this.motion.matches;
-            if (this.reduced) this.time = STORY.visual + .5;
+            if (this.reduced) this.time = this.story.visual + .5;
             this.running = Boolean(this.config.autoPlay && !this.reduced);
             this.autoRotate = Boolean(this.config.autoRotate && !this.reduced);
             this.glow = this.config.glow;
@@ -538,8 +571,8 @@
             this.orbGlow.billboard = true;
             this.waveMesh = this.mesh(E.geometry([], null, E.gl.LINES), [0, 0, 0], [1, 1, 1], [], { color: rgb('#419e7c'), opacity: .19, lit: false, transparent: true }, 2);
             // Agent screens stay inside the upper chamber.
-            const agentSlots = [-2.55, 0, 2.55];
-            for (let i = 0; i < 3; i++) {
+            const agentSlots = this.config.conceptual === true ? [0] : [-2.55, 0, 2.55];
+            for (let i = 0; i < agentSlots.length; i++) {
                 const slot = agentSlots[i];
                 const x = Math.cos(this.screenYaw) * slot, z = -Math.sin(this.screenYaw) * slot;
                 this.box([x, 4.82, z], [1.2, .1, 1.1], { color: rgb('#193d2b'), opacity: .7, transparent: true, gloss: .6 }, 3).screenGroup = true;
@@ -547,10 +580,15 @@
                 this.plane([x, 4.884, z], [.7, .7], [-PI / 2, 0, 0], { texture: this.iconTexture('agents'), color: rgb('#6ceab0'), opacity: .62, lit: false, transparent: true }, 3).screenGroup = true;
             }
             this.makeConversationScreen();
-            this.flow([this.orbPosition, [0, 4.92, 0]], 'output', 0, this.config.accent, { particleSize: 8 });
-            // Answer and charts share the upper chamber.
-            this.makeResultCard(-2.55, 5.39, 'donut');
-            this.makeResultCard(2.55, 5.39, 'bars');
+            if (this.config.prominentConversation) {
+                this.flow([[0, 8.9, 0], this.hubPosition], 'question', 0, this.config.accent, { particleSize: 16, trail: 7 });
+            }
+            this.flow([this.orbPosition, [0, 4.92, 0]], 'output', 0, this.config.accent, { particleSize: this.config.prominentConversation ? 16 : 8, trail: this.config.prominentConversation ? 7 : 2 });
+            // Conceptual cards contain shapes only, never fabricated measured totals.
+            if (this.config.conceptual !== true || this.config.prominentConversation) {
+                this.makeResultCard(-2.55, 5.39, 'donut');
+                this.makeResultCard(2.55, 5.39, 'bars');
+            }
             for (const card of this.resultCards) {
                 const flow = this.flow([[0, 5.15, 0], card.panel.p], 'result', 0, this.config.accent, { particleSize: 8 });
                 flow.panel = card.panel;
@@ -561,6 +599,10 @@
             this.lines.forEach(batch => { if (batch.key.startsWith('route-')) {
                 batch.v = batch.key.startsWith('route-input-') ? [] : this.flows.filter(f => ('route-' + f.type) === batch.key).flatMap(f => this.routeLines(f.pts));
                 batch.tubular = false;
+                if (this.config.prominentConversation && /^route-(question|output|result)$/.test(batch.key)) {
+                    batch.v = this.flows.filter(f => ('route-' + f.type) === batch.key).flatMap(f => this.routeTubes(f.pts, .047));
+                    batch.tubular = true;
+                }
             }
             else if (batch.opacity >= .32) {
                 const v = [];
@@ -568,13 +610,13 @@
                     v.push(...this.routeTubes([batch.v.slice(i, i + 3), batch.v.slice(i + 8, i + 11)], batch.key.startsWith('tray-') || batch.key === 'posts-1' ? .010 : .008));
                 batch.v = v;
                 batch.tubular = true;
-            } const m = this.mesh(E.geometry(batch.v, null, batch.tubular ? E.gl.TRIANGLES : E.gl.LINES), [0, 0, 0], [1, 1, 1], [0, 0, 0], { color: batch.color, opacity: batch.opacity, lit: false, transparent: true, gloss: 0, crisp: /^(tray|posts|route)-/.test(batch.key) }, batch.layer); m.lineKey = batch.key; m.originalVertices = batch.v; m.screenGroup = batch.key === 'agent-pads'; if (batch.key === 'route-result') this.resultRoute = m; if (batch.key === 'route-output') this.outputRoute = m; if (batch.key.startsWith('route-input-')) { m.inputRoute = true; this.inputRoutes.push(m); } if (batch.key.startsWith('route-')) {
+            } const m = this.mesh(E.geometry(batch.v, null, batch.tubular ? E.gl.TRIANGLES : E.gl.LINES), [0, 0, 0], [1, 1, 1], [0, 0, 0], { color: batch.color, opacity: batch.opacity, lit: false, transparent: true, gloss: 0, crisp: /^(tray|posts|route)-/.test(batch.key) }, batch.layer); m.lineKey = batch.key; m.originalVertices = batch.v; m.screenGroup = batch.key === 'agent-pads'; if (batch.key === 'route-result') this.resultRoute = m; if (batch.key === 'route-output') this.outputRoute = m; if (batch.key === 'route-question') this.questionRoute = m; if (batch.key.startsWith('route-input-')) { m.inputRoute = true; this.inputRoutes.push(m); } if (batch.key.startsWith('route-')) {
                 m.isRoute = true;
                 m.emission = .10;
                 m.opacity = .90;
             } });
         }
-        drawConversationScreen(ctx, width, height, questionChars, answerChars, thinkingFrame) {
+        drawConversationScreen(ctx, width, height, questionChars, answerChars, thinkingFrame, gather = 0, returning = 0) {
             ctx.clearRect(0, 0, width, height);
             ctx.fillStyle = 'rgba(6, 23, 18, .98)';
             rr(ctx, 8, 8, width - 16, height - 16, 26);
@@ -600,38 +642,50 @@
                 ctx.fillStyle = '#edf9f2';
                 ctx.direction = rtl ? 'rtl' : 'ltr';
                 ctx.textAlign = rtl ? 'right' : 'left';
-                const words = String(text).trim().split(/\s+/);
-                let lines = [], size = 48;
+                const units = conversationUnits(text);
+                let lines = [], size = this.config.prominentConversation ? 60 : 48;
                 for (; size >= 30; size -= 2) {
                     ctx.font = `600 ${size}px Arial`;
-                    lines = [];
-                    let line = '';
-                    for (const word of words) {
-                        const next = line ? `${line} ${word}` : word;
-                        if (line && ctx.measureText(next).width > width - 205) {
-                            lines.push(line);
-                            line = word;
-                        } else line = next;
-                    }
-                    if (line) lines.push(line);
+                    lines = conversationLines(ctx, units, width - 205);
                     if (lines.length <= 3 &&
-                        lines.every(item => ctx.measureText(item).width <= width - 205)) break;
+                        lines.every(item => ctx.measureText(item.units.join('')).width <= width - 205)) break;
                 }
                 const x = rtl ? width - 145 : 145;
-                let remaining = visibleChars;
                 const displayed = lines.slice(0, 3);
                 if (lines.length > 3) {
-                    let last = displayed[2];
-                    while (last && ctx.measureText(`${last}…`).width > width - 205) last = last.slice(0, -1);
-                    displayed[2] = `${last}…`;
+                    const last = displayed[2].units.slice();
+                    while (last.length && ctx.measureText(`${last.join('')}…`).width > width - 205) last.pop();
+                    displayed[2] = { units: [...last, '…'], start: displayed[2].start };
+                }
+                ctx.save();
+                if (!answer && gather > 0) {
+                    // The actual question lettering contracts into one outgoing trace.
+                    const endX = rtl ? width - 48 : 48;
+                    ctx.translate(mix(x, endX, gather), y);
+                    ctx.scale(1 - gather * .96, 1 - gather * .98);
+                    ctx.translate(-x, -y);
+                    ctx.globalAlpha = 1 - gather;
                 }
                 displayed.forEach((line, index) => {
-                    const letters = Array.from(line);
-                    const visible = letters.slice(0, Math.max(0, remaining)).join('');
+                    const visible = line.units.slice(0, Math.max(0, visibleChars - line.start)).join('');
                     const baseline = displayed.length === 1 ? y + 15 : displayed.length === 2 ? y - 15 + index * 58 : y - 48 + index * 48;
                     if (visible) ctx.fillText(visible, x, baseline, width - 205);
-                    remaining -= letters.length + 1;
                 });
+                ctx.restore();
+                if (!answer && gather > 0) {
+                    const endX = rtl ? width - 48 : 48;
+                    const fromX = rtl ? 145 : width - 145;
+                    ctx.save();
+                    ctx.globalAlpha = gather;
+                    ctx.strokeStyle = this.config.accent;
+                    ctx.lineWidth = 10;
+                    ctx.lineCap = 'round';
+                    ctx.beginPath();
+                    ctx.moveTo(endX, y);
+                    ctx.lineTo(mix(fromX, endX + (rtl ? -16 : 16), gather), y);
+                    ctx.stroke();
+                    ctx.restore();
+                }
                 ctx.strokeStyle = answer ? '#3f9e72' : '#527d65';
                 ctx.lineWidth = 4;
                 ctx.beginPath();
@@ -640,12 +694,24 @@
                 ctx.stroke();
             };
             row(this.config.question, 128, false, questionChars);
+            if (returning > 0 && answerChars === 0) {
+                ctx.save();
+                ctx.strokeStyle = this.config.accent;
+                ctx.lineWidth = 10;
+                ctx.lineCap = 'round';
+                const edge = rtl ? 48 : width - 48, end = rtl ? width - 145 : 145;
+                ctx.beginPath();
+                ctx.moveTo(edge, 340);
+                ctx.lineTo(mix(edge, end, returning), 340);
+                ctx.stroke();
+                ctx.restore();
+            }
             if (thinkingFrame >= 0) {
                 ctx.fillStyle = '#69e7ad';
                 for (let index = 0; index < 3; index++) {
                     ctx.globalAlpha = index === thinkingFrame ? 1 : .32;
                     ctx.beginPath();
-                    ctx.arc(145 + index * 38, 340, 10, 0, TAU);
+                    ctx.arc(rtl ? width - 145 - index * 38 : 145 + index * 38, 340, 10, 0, TAU);
                     ctx.fill();
                 }
                 ctx.globalAlpha = 1;
@@ -654,7 +720,8 @@
         makeConversationScreen() {
             const texture = this.canvasTexture('conversation', 1024, 486,
                 (ctx, width, height) => this.drawConversationScreen(ctx, width, height, 0, 0, -1));
-            const bubble = this.plane([0, 5.56, 0], [3.25, 1.32], [-.28, this.screenYaw, 0], {
+            const prominent = this.config.prominentConversation === true;
+            const bubble = this.plane([0, prominent ? 8.9 : 5.56, 0], prominent ? [9.4, 4.46] : [3.25, 1.32], [-.28, this.screenYaw, 0], {
                 texture, color: [1, 1, 1], opacity: 1, lit: false, transparent: true, gloss: 0
             }, 3);
             bubble.conversationScreen = true;
@@ -665,6 +732,48 @@
         }
         drawResultCard(ctx, width, height, kind, progress) {
             ctx.clearRect(0, 0, width, height);
+            if (this.config.conceptual === true) {
+                // Decorative chart grammar, with no axes, quantities or performance claims.
+                ctx.fillStyle = '#343541';
+                rr(ctx, 5, 5, width - 10, height - 10, 28);
+                ctx.fill();
+                ctx.strokeStyle = '#0ab39c';
+                ctx.lineWidth = 4;
+                ctx.stroke();
+                ctx.fillStyle = '#f2f2f2';
+                ctx.fillRect(36, 34, 98, 8);
+                ctx.globalAlpha = .4;
+                ctx.fillRect(36, 54, 160, 5);
+                ctx.globalAlpha = 1;
+                if (kind === 'donut') {
+                    const segments = 8, center = [width / 2, height * .55];
+                    ctx.lineWidth = 24;
+                    for (let i = 0; i < segments; i++) {
+                        ctx.strokeStyle = i < progress * segments ? '#0ab39c' : '#f2f2f2';
+                        ctx.globalAlpha = i < progress * segments ? 1 : .18;
+                        ctx.beginPath();
+                        ctx.arc(...center, 98, -PI / 2 + i * TAU / segments + .045, -PI / 2 + (i + 1) * TAU / segments - .045);
+                        ctx.stroke();
+                    }
+                    ctx.globalAlpha = 1;
+                    ctx.lineWidth = 9;
+                    ctx.strokeStyle = '#ffffff';
+                    ctx.beginPath();
+                    ctx.moveTo(center[0] - 29, center[1]);
+                    ctx.lineTo(center[0] - 8, center[1] + 22);
+                    ctx.lineTo(center[0] + 35, center[1] - 24);
+                    ctx.stroke();
+                } else {
+                    const levels = [.42, .67, .52, .86, .73];
+                    levels.forEach((value, i) => {
+                        const bar = 215 * value * progress;
+                        ctx.fillStyle = i === 3 ? '#ffffff' : '#0ab39c';
+                        rr(ctx, 54 + i * 82, 315 - bar, 49, bar + 1, 7);
+                        ctx.fill();
+                    });
+                }
+                return;
+            }
             ctx.fillStyle = '#102b21';
             rr(ctx, 5, 5, width - 10, height - 10, 28);
             ctx.fill();
@@ -709,7 +818,7 @@
             const key = 'result-' + kind;
             const texture = this.canvasTexture(key, 512, 384, (ctx, width, height) => this.drawResultCard(ctx, width, height, kind, 0));
             const panel = this.plane([Math.cos(this.screenYaw) * slot, height, -Math.sin(this.screenYaw) * slot],
-                [1.40, 1.0], [-.28, this.screenYaw, 0], {
+                this.config.prominentConversation ? [1.95, 1.46] : [1.40, 1.0], [-.28, this.screenYaw, 0], {
                 texture, color: [1, 1, 1], opacity: 1, lit: false, transparent: true, gloss: 0
             }, 3);
             panel.resultPanel = true;
@@ -720,35 +829,38 @@
         shift(y, layer) { return y + this.explode * (layer === 4 ? 3 : layer); }
         expandPoint(p) { const offset = [1.55, 3.1, 4.65].reduce((s, y) => s + smooth(y - .17, y + .17, p[1]), 0); return [p[0], p[1] + this.explode * offset, p[2]]; }
         updateStoryOpacity(mesh, cycle, phase, dominant) {
-            const endFade = 1 - smooth(STORY.fade, STORY.cycle, cycle);
+            const endFade = 1 - smooth(this.story.fade, this.story.cycle, cycle);
             const enabled = this.selectedSources?.size !== 0;
-            if (mesh.conversationScreen) mesh.opacity = smooth(0, .22, cycle) * endFade;
+            if (mesh.conversationScreen) mesh.opacity = this.config.prominentConversation ? 1 : smooth(0, .22, cycle) * endFade;
             if (mesh.resultPanel) mesh.opacity = enabled ? smooth(21, 24, phase) * endFade : 0;
             const stage = FLOW_STAGES[mesh.lineKey?.split('-')[1]];
             if (stage) {
-                const start = phaseTime(stage[0]), end = phaseTime(stage[1]);
-                mesh.opacity = enabled ? .5 * smooth(start - .06, start + .06, cycle) * (1 - smooth(end, end + .18, cycle)) : 0;
+                const start = phaseTime(stage[0], this.storyBeats), end = phaseTime(stage[1], this.storyBeats);
+                const strong = this.config.prominentConversation && /route-(question|output|result)$/.test(mesh.lineKey);
+                mesh.opacity = enabled ? (strong ? .85 : .5) * smooth(start - .06, start + .06, cycle) * (1 - smooth(end, end + .18, cycle)) : 0;
             }
             if (mesh.side !== undefined) mesh.opacity = mesh.side === dominant && this.width >= LABEL_OVERLAY_WIDTH ? 1 : 0;
             // Structural material opacity stays fixed.
         }
         updateScene(dt) {
-            const t = this.time, cycle = t % STORY.cycle, phase = storyPhase(cycle);
-            this.root.dataset.storyPhase = cycle < STORY.question ? 'question' : cycle < STORY.answer ? 'answer' : 'visual';
+            const t = this.time, cycle = t % this.story.cycle, phase = storyPhase(cycle, this.storyBeats);
+            this.root.dataset.storyPhase = cycle < this.story.question ? 'question' : cycle < this.story.answer ? 'answer' : 'visual';
             const visibleChars = (text, start, duration) => {
-                const length = Array.from(text).length;
+                const length = conversationUnits(text).length;
                 const progress = clamp((cycle - start) / duration, 0, 1);
                 return progress >= 1 ? length : Math.floor(progress * length / 2) * 2;
             };
-            const questionChars = visibleChars(this.config.question, 0, STORY.question);
-            const answerChars = visibleChars(this.config.answer, STORY.thinking, STORY.answer - STORY.thinking);
-            const thinkingFrame = cycle >= STORY.question && cycle < STORY.thinking ? Math.floor((cycle - STORY.question) * 6) % 3 : -1;
-            const stateKey = `${questionChars}:${answerChars}:${thinkingFrame}`;
+            const questionChars = visibleChars(this.config.question, 0, this.story.question);
+            const answerChars = visibleChars(this.config.answer, this.story.thinking, this.story.answer - this.story.thinking);
+            const thinkingFrame = cycle >= this.story.question && cycle < this.story.thinking ? Math.floor((cycle - this.story.question) * 6) % 3 : -1;
+            const gather = this.config.prominentConversation ? Math.round(30 * smooth(this.story.gather, this.story.send, cycle) * (1 - smooth(this.story.thinking, this.story.answer, cycle))) / 30 : 0;
+            const returning = this.config.prominentConversation ? Math.round(30 * smooth(phaseTime(13, this.storyBeats), this.story.thinking, cycle)) / 30 : 0;
+            const stateKey = `${questionChars}:${answerChars}:${thinkingFrame}:${gather}:${returning}`;
             if (stateKey !== this.conversationStateKey) {
                 this.conversationStateKey = stateKey;
                 const { canvas, texture } = this.textures.get('conversation');
                 this.drawConversationScreen(canvas.getContext('2d'), canvas.width, canvas.height,
-                    questionChars, answerChars, thinkingFrame);
+                    questionChars, answerChars, thinkingFrame, gather, returning);
                 const gl = this.engine.gl;
                 gl.bindTexture(gl.TEXTURE_2D, texture);
                 gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
@@ -822,6 +934,20 @@
                 const p = pointTransform(this.orb.model, v);
                 particles.push(...p, .57, .98, .76, 4.4);
             }
+            if (this.config.prominentConversation && hasInput && phase >= 8 && phase <= 13) {
+                // One bounded packet cloud: arrival, dispersion, then convergence.
+                // It shares the scene clock, pause state and reduced-motion fallback.
+                const burst = smooth(8, 9.25, phase), collect = smooth(10, 13, phase);
+                const hub = [this.hubPosition[0], this.shift(this.hubPosition[1], 1), this.hubPosition[2]];
+                const orb = pointTransform(this.orb.model, [0, 0, 0]);
+                for (let i = 0; i < 40; i++) {
+                    const angle = i * 2.399963, radius = .55 + (i % 7) * .23;
+                    const scatter = [Math.cos(angle) * radius, .25 + (i % 5) * .18, Math.sin(angle) * radius];
+                    const p = hub.map((value, axis) => mix(value + scatter[axis] * burst, orb[axis], collect));
+                    const strength = .72 + (i % 3) * .14;
+                    particles.push(...p, ...this.accent.map(c => c * strength), 7 + (i % 3) * 2);
+                }
+            }
             for (const p of this.sourcePositions)
                 push(p, [.12, .55, .32], 3.2, 0);
             // Additional low-level inflow around the source layer makes data feel generated from below.
@@ -851,7 +977,7 @@
             }
             this.flows.forEach(f => {
                 const kind = f.type.split('-')[0], start = f.start, end = f.end;
-                if (!hasInput || cycle < phaseTime(start) || cycle >= phaseTime(end)) return;
+                if (!hasInput || cycle < phaseTime(start, this.storyBeats) || cycle >= phaseTime(end, this.storyBeats)) return;
                 const pos = clamp((phase - start) / (end - start), 0, 1);
                 if (kind === 'input') {
                     const key = 'route-' + f.type;
@@ -860,7 +986,7 @@
                     push(onPath(f.pts, pos, f.lengths), f.color, f.particleSize);
                     return;
                 }
-                const layer = kind === 'result' || kind === 'output' ? 0 : null;
+                const layer = kind === 'result' || kind === 'output' || kind === 'question' ? 0 : null;
                 push(onPath(f.pts, pos, f.lengths), f.color, f.particleSize, layer);
                 if (phase <= end) for (let trail = 1; trail <= f.trail; trail++)
                     if (pos > trail * .025)
@@ -882,16 +1008,27 @@
             return [p[0] * c + p[2] * s, p[1], p[2] * c - p[0] * s];
         }
         updateResultRoutes() {
-            if (!this.resultRoute) return;
+            if (!this.outputRoute && !this.resultRoute && !this.questionRoute) return;
             const gl = this.engine.gl;
-            for (const [type, mesh] of [['output', this.outputRoute], ['result', this.resultRoute]]) {
+            for (const [type, mesh] of [['question', this.questionRoute], ['output', this.outputRoute], ['result', this.resultRoute]]) {
+                if (!mesh) continue;
                 const vertices = [];
                 this.flows.filter(f => f.type === type).forEach(f => {
-                    f.pts = type === 'output'
-                        ? [pointTransform(this.orb.model, [0, 0, 0]), pointTransform(this.conversationMesh.model, [0, -.5, 0])]
-                        : [pointTransform(this.conversationMesh.model, [Math.sign(f.slot) * .45, -.31, 0]), pointTransform(f.panel.model, [0, 0, 0])];
+                    const screen = p => pointTransform(this.conversationMesh.model, p);
+                    const rtl = document.documentElement.dir === 'rtl', edge = rtl ? 1 : -1;
+                    if (type === 'question') {
+                        f.pts = this.roundedRoute([screen([edge * .453, .237, .01]), screen([edge * .49, .237, .01]), screen([edge * .49, -.53, .01]), [this.hubPosition[0], this.shift(this.hubPosition[1], 1), this.hubPosition[2]]]);
+                    } else if (type === 'output' && this.config.prominentConversation) {
+                        f.pts = this.roundedRoute([pointTransform(this.orb.model, [0, 0, 0]), screen([-edge * .49, -.54, .01]), screen([-edge * .49, -.2, .01]), screen([-edge * .41, -.2, .01])]);
+                    } else if (type === 'result' && this.config.prominentConversation) {
+                        f.pts = [pointTransform(this.orb.model, [0, 0, 0]), pointTransform(f.panel.model, [0, 0, 0])];
+                    } else {
+                        f.pts = type === 'output'
+                            ? [pointTransform(this.orb.model, [0, 0, 0]), screen([0, -.5, 0])]
+                            : [screen([Math.sign(f.slot) * .45, -.31, 0]), pointTransform(f.panel.model, [0, 0, 0])];
+                    }
                     f.lengths = pathLength(f.pts);
-                    vertices.push(...this.routeLines(f.pts));
+                    vertices.push(...(this.config.prominentConversation ? this.routeTubes(f.pts, type === 'result' ? .035 : .047) : this.routeLines(f.pts)));
                 });
                 gl.bindBuffer(gl.ARRAY_BUFFER, mesh.geo.buffer);
                 gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.DYNAMIC_DRAW);
@@ -928,18 +1065,32 @@
                 label.style.transform = `translate(${x}px,${centerY - labelHeight / 2}px)`;
             }
         }
-        rebuildRoutes() { const gl = this.engine.gl; this.meshes.filter(m => m.isRoute && !m.inputRoute && m !== this.resultRoute && m !== this.outputRoute).forEach(m => { const data = [...m.originalVertices]; for (let i = 0; i < data.length; i += 8) {
+        rebuildRoutes() { const gl = this.engine.gl; this.meshes.filter(m => m.isRoute && !m.inputRoute && m !== this.resultRoute && m !== this.outputRoute && m !== this.questionRoute).forEach(m => { const data = [...m.originalVertices]; for (let i = 0; i < data.length; i += 8) {
             const p = this.expandPoint(data.slice(i, i + 3));
             data[i + 1] = p[1];
         } gl.bindBuffer(gl.ARRAY_BUFFER, m.geo.buffer); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(data), gl.STATIC_DRAW); }); }
+        viewCenter(spread = this.explode || 0) {
+            return this.H * 2 + spread * 1.5 + (this.config.prominentConversation ? 1.6 : 0);
+        }
         fittedDistance(yaw = this.yaw, pitch = this.pitch, spread = this.explode || 0) {
             // Fit perspective bounds at the actual view angle.
             const sy = Math.sin(yaw), cy = Math.cos(yaw), sp = Math.sin(pitch), cp = Math.cos(pitch);
-            const centerY = this.H * 2 + spread * 1.5;
+            const centerY = this.viewCenter(spread);
             let distance = 3;
+            const bounds = [];
             for (const x of [-this.W / 2 - .12, this.W / 2 + .12])
                 for (const y of [-.15, this.H * 4 + .15 + spread * 3])
                     for (const z of [-this.D / 2 - .12, this.D / 2 + .12]) {
+                        bounds.push([x, y, z]);
+                    }
+            if (this.config.prominentConversation) {
+                // The original conversation plane stays in the same 3D scene.
+                // Include its camera-facing corners, so neither chat nor cube clips.
+                for (const x of [-4.7, 4.7]) for (const y of [-2.23, 2.23]) {
+                    bounds.push([x * cy - y * sy * sp, 8.9 + spread * 3 + y * cp, -x * sy - y * cy * sp]);
+                }
+            }
+            for (const [x, y, z] of bounds) {
                         const dy = y - centerY;
                         const depth = x * sy * cp + dy * sp + z * cy * cp;
                         const horizontal = x * cy - z * sy;
@@ -1001,7 +1152,7 @@
             this.time += dt;
             if (this.autoRotate) {
                 // One gentle out-and-back arc per story.
-                const arc = (1 - Math.cos(TAU * (this.time % STORY.cycle) / STORY.cycle)) / 2;
+                const arc = (1 - Math.cos(TAU * (this.time % this.story.cycle) / this.story.cycle)) / 2;
                 this.yawGoal = this.homeYaw + .24 * arc;
                 this.pitchGoal = .28 + .025 * arc;
             }
@@ -1013,7 +1164,7 @@
             this.advanceMotion(dt);
             this.yaw = mix(this.yaw, this.yawGoal, ease); this.pitch = mix(this.pitch, this.pitchGoal, ease); this.zoom = mix(this.zoom, this.zoomGoal, ease); this.explode = mix(this.explode, this.explodeGoal, ease); if (Math.abs(this.explode - this.explodeGoal) < .0005)
             this.explode = this.explodeGoal; if (Math.abs(priorSpread - this.explode) > .00001)
-            this.rebuildRoutes(); const target = [0, this.H * 2 + this.explode * 1.5, 0], dist = this.fittedDistance() * this.zoom; this.eye = [Math.sin(this.yaw) * Math.cos(this.pitch) * dist, target[1] + Math.sin(this.pitch) * dist, Math.cos(this.yaw) * Math.cos(this.pitch) * dist]; this.view = lookAt(this.eye, target); this.updateMobileLabels(); this.updateScene(dt); this.engine.render(this.meshes, this.pointData, this.view, this.projection, this.eye, this.glow); const moving = Math.abs(this.yawGoal - this.yaw) > .00005 || Math.abs(this.pitchGoal - this.pitch) > .00005 || Math.abs(this.zoomGoal - this.zoom) > .00005 || Math.abs(this.explodeGoal - this.explode) > .00005; if (this.running || moving || this.pointers.size || (this.manualView && !this.reduced))
+            this.rebuildRoutes(); const target = [0, this.viewCenter(), 0], dist = this.fittedDistance() * this.zoom; this.eye = [Math.sin(this.yaw) * Math.cos(this.pitch) * dist, target[1] + Math.sin(this.pitch) * dist, Math.cos(this.yaw) * Math.cos(this.pitch) * dist]; this.view = lookAt(this.eye, target); this.updateMobileLabels(); this.updateScene(dt); this.engine.render(this.meshes, this.pointData, this.view, this.projection, this.eye, this.glow); const moving = Math.abs(this.yawGoal - this.yaw) > .00005 || Math.abs(this.pitchGoal - this.pitch) > .00005 || Math.abs(this.zoomGoal - this.zoom) > .00005 || Math.abs(this.explodeGoal - this.explode) > .00005; if (this.running || moving || this.pointers.size || (this.manualView && !this.reduced))
             this.schedule();
         else
             this.lastFrame = 0; }
@@ -1036,7 +1187,7 @@
             this.listen(this.canvas, 'pointerup', release);
             this.listen(this.canvas, 'pointercancel', release);
             this.listen(this.canvas, 'lostpointercapture', e => { this.pointers.delete(e.pointerId); this.lastPinch = 0; this.schedule(); });
-            this.listen(this.canvas, 'wheel', e => { e.preventDefault(); this.interact(); this.zoomGoal = clamp(this.zoomGoal * Math.exp(clamp(e.deltaY, -90, 90) * .0016), .62, 1.62); this.schedule(); }, { passive: false });
+            if (!this.config.conceptual) this.listen(this.canvas, 'wheel', e => { e.preventDefault(); this.interact(); this.zoomGoal = clamp(this.zoomGoal * Math.exp(clamp(e.deltaY, -90, 90) * .0016), .62, 1.62); this.schedule(); }, { passive: false });
             this.listen(this.canvas, 'keydown', e => { const actions = { ArrowLeft: () => this.yawGoal -= .15, ArrowRight: () => this.yawGoal += .15, ArrowUp: () => this.pitchGoal = clamp(this.pitchGoal + .12, -1.1, 1.46), ArrowDown: () => this.pitchGoal = clamp(this.pitchGoal - .12, -1.1, 1.46), '+': () => this.zoomGoal = clamp(this.zoomGoal * .92, .62, 1.62), '=': () => this.zoomGoal = clamp(this.zoomGoal * .92, .62, 1.62), '-': () => this.zoomGoal = clamp(this.zoomGoal / .92, .62, 1.62), Home: () => this.reset(), ' ': () => this.togglePlay() }; if (actions[e.key]) {
                 e.preventDefault();
                 e.stopPropagation();
@@ -1094,7 +1245,7 @@
             this.listen(this.motion, 'change', () => { this.reduced = this.motion.matches; if (this.reduced) {
                 this.running = false;
                 this.autoRotate = false;
-                this.time = STORY.visual + .5;
+                this.time = this.story.visual + .5;
             } this.updateButtons(); this.schedule(); });
             this.listen(this.canvas, 'webglcontextlost', e => { e.preventDefault(); this.lost = true; cancelAnimationFrame(this.raf); this.raf = 0; this.showFallback(this.config.accessibleLabel || this.root.dataset.cubeDescription || ''); });
             this.listen(this.canvas, 'webglcontextrestored', () => { this.showFallback(this.config.accessibleLabel || this.root.dataset.cubeDescription || ''); });
@@ -1119,6 +1270,29 @@
         pause() { if (this.running)
             this.togglePlay(); }
         seek(seconds) { this.time = Math.max(0, Number(seconds) || 0); this.schedule(); }
+        setStory(story) {
+            if (this.config.conceptual !== true || this.disposed || !story ||
+                typeof story.question !== 'string' || typeof story.answer !== 'string') return false;
+            const question = story.question.trim(), answer = story.answer.trim();
+            if (!question || !answer || question.length > 1024 || answer.length > 1024) return false;
+            if (question === this.config.question && answer === this.config.answer) return true;
+            this.config.question = question;
+            this.config.answer = answer;
+            this.root.dataset.cubeQuestion = question;
+            this.root.dataset.cubeAnswer = answer;
+            const questionCopy = this.root.querySelector('.home-cube__question');
+            const answerCopy = this.root.querySelector('.home-cube__answer');
+            const fallbackCopy = this.root.querySelectorAll('[data-fallback] p');
+            if (questionCopy) questionCopy.textContent = question;
+            if (answerCopy) answerCopy.textContent = answer;
+            if (fallbackCopy[0]) fallbackCopy[0].textContent = question;
+            if (fallbackCopy[1]) fallbackCopy[1].textContent = answer;
+            this.conversationStateKey = '';
+            this.time = this.reduced || !this.running ? this.story.visual + .5 : 0;
+            this.lastFrame = 0;
+            this.schedule();
+            return true;
+        }
         updateButtons() { const b = this.root.querySelector('[data-action=play]'), s = this.root.querySelector('[data-play-icon]'); b.disabled = this.reduced || Boolean(this.error); b.setAttribute('aria-pressed', String(this.running)); const txt = this.running ? (this.config.pauseLabel || 'Pause motion') : (this.config.resumeLabel || 'Resume motion'); b.setAttribute('aria-label', txt); b.title = txt; while (s.firstChild)
             s.removeChild(s.firstChild); const path = document.createElementNS('http://www.w3.org/2000/svg', 'path'); path.setAttribute('d', this.running ? 'M8 5v14M16 5v14' : 'M8 5 19 12 8 19Z'); s.append(path); this.root.querySelector('[data-action=autorotate]').setAttribute('aria-pressed', String(this.autoRotate)); this.root.querySelector('[data-status]').textContent = this.reduced || this.running ? '' : (this.config.resumeLabel || 'Paused'); }
         toggleSettings(force, restoreFocus = true) { const p = this.root.querySelector('.axc-panel'), btn = this.root.querySelector('[data-action=settings]'), open = force === undefined ? p.hidden : force; p.hidden = !open; btn.setAttribute('aria-expanded', String(open)); if (open)

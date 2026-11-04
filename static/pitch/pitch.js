@@ -127,7 +127,7 @@
     const url = new URL(window.location.href);
     url.searchParams.set('theme', theme);
     if (reading) url.searchParams.set('view', 'reading'); else url.searchParams.delete('view');
-    url.hash = '/' + slides[index].id;
+    url.hash = slides[index].id;
     window.history.replaceState(null, '', url);
     const other = new URL(language.getAttribute('href'), window.location.href);
     other.search = url.search;

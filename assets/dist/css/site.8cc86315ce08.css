@@ -2175,6 +2175,13 @@
     margin-block-end: 1.5rem;
   }
 
+  .site-footer__location {
+    margin-block: 0 1.25rem;
+    color: var(--brand-white);
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+
   .site-footer__orientation ul {
     display: grid;
     gap: 0.45rem;

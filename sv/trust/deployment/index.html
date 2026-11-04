@@ -78,14 +78,16 @@
   <meta name="twitter:image" content="https://www.advanexus.com/assets/dist/icons/social-card.b89404f2b760.png">
   <meta name="twitter:image:alt" content="advanexus — kontroll och bevis för verksamhetskritiska flöden över system, data och AI-stött arbete.">
   <link rel="preload" href="/assets/dist/fonts/SpaceGrotesk-variable.8e085aa43809.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/dist/css/site.868f77dd0a2b.css">
+  <link rel="stylesheet" href="/assets/dist/css/site.8cc86315ce08.css">
   
-  
+  <link rel="stylesheet" href="/assets/dist/css/buyer-journey.06cc2f3c003a.css">
 
+  <link rel="stylesheet" href="/assets/dist/css/site-experience.01f8670497b3.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://www.advanexus.com/sv/trust/deployment/#webpage","url":"https://www.advanexus.com/sv/trust/deployment/","name":"advanexus driftsättning | Runtime-gränser och produktionsacceptans","description":"Granska nuvarande container-runtime, målbilden på AWS och den acceptansevidens som krävs för produktionsgodkännande.","inLanguage":"sv","isPartOf":{"@id":"https://www.advanexus.com/#website"},"publisher":{"@id":"https://www.advanexus.com/#organization"},"about":{"@id":"https://www.advanexus.com/sv/trust/#topic-trust"},"dateModified":"2026-07-30","breadcrumb":{"@id":"https://www.advanexus.com/sv/trust/deployment/#breadcrumb"}},{"@type":"DefinedTerm","@id":"https://www.advanexus.com/sv/trust/#topic-trust","name":"Arkitektur, säkerhet och tillit","description":"Publika kontrakt för arkitektur, säkerhet, evidens, driftsättning och funktionsstatus.","url":"https://www.advanexus.com/sv/trust/"},{"@type":"BreadcrumbList","@id":"https://www.advanexus.com/sv/trust/deployment/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Start","item":"https://www.advanexus.com/sv/"},{"@type":"ListItem","position":2,"name":"Tillitscenter","item":"https://www.advanexus.com/sv/trust/"},{"@type":"ListItem","position":3,"name":"Driftsättning","item":"https://www.advanexus.com/sv/trust/deployment/"}]}]}</script>
   <script src="/assets/dist/js/typing.d72c71ee9cf4.js" defer></script>
   <script src="/assets/dist/js/form-safety.3b307b166fd8.js" defer></script>
   <script src="/assets/dist/js/main.8566869dc07e.js" defer></script>
+  <script src="/assets/dist/js/site-experience.63f342a72b88.js" defer></script>
   
 </head>
 <body data-page-id="trust-deployment" data-page-kind="technical">
@@ -119,7 +121,7 @@
                 <svg class="icon icon--chevron" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="m5 7.5 5 5 5-5"/></svg>
               </summary>
               <div class="nav-group__panel nav-group__panel--buyer">
-                <p class="nav-group__intro">advanexus är en plattform för att koppla ihop och bearbeta data från era system och filer. Förbered data, kör verksamhetskontroller och skapa rapporter med tydliga åtkomstregler och registrering av varje körning.</p>
+                <p class="nav-group__intro">Samla data från databaser och filer i ett återanvändbart arbetsflöde: förbered, överför, kontrollera och analysera. Relevanta versioner och körningsuppgifter följer resultatet, så att nästa fråga inte leder till ännu en sökning.</p>
                 <div class="nav-group__columns nav-group__columns--4">
                   
                     <section class="nav-group__column" aria-label="Utforska produkten">
@@ -803,6 +805,29 @@
   </div>
     </div>
   </section>
+  
+  
+
+<nav class="page-compass" aria-label="På den här sidan" data-page-compass>
+  <div class="shell page-compass__inner">
+    
+    <span class="page-compass__label">På den här sidan</span>
+    
+    <ol role="list">
+      
+      <li><a href="#section-1-title"><span aria-hidden="true">01</span>Nuvarande runtime gör workload-gränser konkreta.</a></li>
+      
+      <li><a href="#section-2-title"><span aria-hidden="true">02</span>Hanterade AWS-tjänster är en målarkitektur.</a></li>
+      
+      <li><a href="#section-3-title"><span aria-hidden="true">03</span>Acceptans omfattar fel, inte bara uppstart.</a></li>
+      
+      <li><a href="#section-4-title"><span aria-hidden="true">04</span>Publik status kan inte certifiera en kundmiljö.</a></li>
+      
+    </ol>
+    
+  </div>
+</nav>
+
 
   
   
@@ -942,6 +967,7 @@
   
   
   
+  
     <section class="related-pages" aria-labelledby="related-title">
       <div class="shell">
         <div class="related-pages__heading">
@@ -1000,12 +1026,12 @@
     <div class="content-section__body accordion">
       
       <details class="accordion__item">
-        <summary>Är varje driftsättning automatiskt produktionsklar?</summary>
+        <summary><span>Är varje driftsättning automatiskt produktionsklar?</span><svg class="icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h12M10 4v12"/></svg></summary>
         <div class="accordion__answer"><p>Nej. Produktionsgodkännande kräver exakt revision, oföränderliga images, målinfrastruktur och registrerad acceptans för migrering, behörighet, återställning, lagring, anslutningar och drift.</p></div>
       </details>
       
       <details class="accordion__item">
-        <summary>Var finns kunddata?</summary>
+        <summary><span>Var finns kunddata?</span><svg class="icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h12M10 4v12"/></svg></summary>
         <div class="accordion__answer"><p>Driftsättnings- och jobbpolicy avgör vägen. STANDARD-arbete som stöds kan använda kontrollerad mellanlagring, EPHEMERAL_STAGING kräver verifierad radering före lyckat resultat och NO_STAGING tillåter endast en innehållsfri väg från källa till mål med avgränsade minnessidor. Godkännande av anslutning och produktion gäller fortfarande.</p></div>
       </details>
       
@@ -1013,6 +1039,8 @@
   </div>
 </section>
 
+
+  
 
   </main>
 

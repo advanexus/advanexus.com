@@ -1,7 +1,7 @@
 /* A deterministic, local walkthrough. No requests, credentials, storage or AI calls. */
 (() => {
   'use strict';
-  const {copy: ui, scenarios, locale, project_name: projectName = 'Banks'} = JSON.parse(document.getElementById('guide-data').textContent);
+  const {copy: ui, scenarios, locale, project_name: projectName = 'Banks'} = JSON.parse(document.getElementById('guide-data').content.textContent);
   const $ = (id) => document.getElementById(id);
   const t = (sr, en) => locale === 'rs' ? sr : en;
   const esc = (value) => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'}[char]));
@@ -57,8 +57,11 @@
 
   function updateLinks() {
     const theme = document.body.dataset.theme;
-    const hash = scenario ? `#${scenario.id}/${steps[stepIndex].id}` : '';
-    $('language-link').href = `${languageBase}?theme=${theme}${hash}`;
+    const destination = new URL(languageBase, window.location.href);
+    destination.searchParams.set('theme', theme);
+    if (scenario) destination.searchParams.set('step', steps[stepIndex].id);
+    destination.hash = scenario ? scenario.id : '';
+    $('language-link').href = destination.pathname + destination.search + destination.hash;
     $('presentation-link').href = `${presentationBase}?theme=${theme}#delivery`;
     document.querySelector('.guide-brand').href = $('presentation-link').href;
   }
@@ -76,7 +79,9 @@
 
   function syncAddress() {
     const url = new URL(window.location.href);
-    url.hash = scenario ? `${scenario.id}/${steps[stepIndex].id}` : '';
+    if (scenario) url.searchParams.set('step', steps[stepIndex].id);
+    else url.searchParams.delete('step');
+    url.hash = scenario ? scenario.id : '';
     history.replaceState(null, '', url);
     updateLinks();
   }
@@ -341,9 +346,11 @@
   document.addEventListener('visibilitychange', () => { if (document.hidden) pause(); });
   window.addEventListener('pagehide', () => { pause(); finishAnimation(); });
   const readAddress = () => {
-    const [id, step] = window.location.hash.slice(1).split('/');
+    const url = new URL(window.location.href);
+    const [id, legacyStep, ...extra] = url.hash.slice(1).split('/');
+    const step = legacyStep ?? url.searchParams.get('step');
     const index = steps.findIndex(item => item.id === step);
-    if (scenarios.some(item => item.id === id)) startScenario(id, index < 0 ? 0 : index, false);
+    if (!extra.length && scenarios.some(item => item.id === id)) startScenario(id, index < 0 ? 0 : index, false);
     else showChooser(false);
   };
   window.addEventListener('hashchange', readAddress);

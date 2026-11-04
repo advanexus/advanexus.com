@@ -1,7 +1,7 @@
 /* Interactive product walkthrough. No application state or live execution. */
 @font-face {
   font-family: "Space Grotesk";
-  src: url("/assets/fonts/SpaceGrotesk-variable.woff2") format("woff2");
+  src: url("/assets/dist/fonts/SpaceGrotesk-variable.8e085aa43809.woff2") format("woff2");
   font-style: normal;
   font-weight: 300 700;
   font-display: swap;
