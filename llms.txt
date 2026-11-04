@@ -12,14 +12,14 @@ Progress that stays connected. advanexus brings advance and nexus together: movi
 
 ## Business problems
 
-- Why does the report not reconcile? Compare the prepared report with operational records and the general ledger. Identify the items behind a difference instead of rebuilding the comparison by hand.
-- What happened to this payment? Connect channel, processing, ledger and settlement records. See which stages are confirmed and where a record or explanation is still missing.
-- What prevents this delivery from closing? Bring together transport, warehouse and receipt records. Identify the missing step or document holding up the next action.
-- Was this request really abandoned? Compare application, branch and request records. Separate completed, cancelled, open and unresolved journeys before drawing a conclusion.
-- Who qualifies for this benefit? Connect membership, previous benefit use and contact rules. Separate candidates, exclusions and cases needing review, with a reason for each.
-- Which exception needs attention? Compare the recorded event with the applicable rule and approval. Distinguish explained differences from exceptions still requiring investigation.
-- The file arrived. Is it ready to use? Check partner data against the expected structure and quality rules. Prepare usable data for analysis or transfer, and identify what needs correction.
-- The transfer finished. Was it correct? Compare source and destination against the agreed mapping. Review record and value differences before accepting the transferred data.
+- [Why does the report not reconcile?](https://www.advanexus.com/use-cases/business-problems/regulatory-reporting/): Compare the prepared report with operational records and the general ledger. Identify the items behind a difference instead of rebuilding the comparison by hand.
+- [What happened to this payment?](https://www.advanexus.com/use-cases/business-problems/evidence-backed-investigation/): Connect channel, processing, ledger and settlement records. See which stages are confirmed and where a record or explanation is still missing.
+- [What prevents this delivery from closing?](https://www.advanexus.com/use-cases/industries/logistics-supply-chain/): Bring together transport, warehouse and receipt records. Identify the missing step or document holding up the next action.
+- [Was this request really abandoned?](https://www.advanexus.com/use-cases/business-problems/evidence-backed-investigation/): Compare application, branch and request records. Separate completed, cancelled, open and unresolved journeys before drawing a conclusion.
+- [Who qualifies for this benefit?](https://www.advanexus.com/use-cases/business-problems/governed-analytics-delivery/): Connect membership, previous benefit use and contact rules. Separate candidates, exclusions and cases needing review, with a reason for each.
+- [Which exception needs attention?](https://www.advanexus.com/use-cases/business-problems/audit-ready-data-operations/): Compare the recorded event with the applicable rule and approval. Distinguish explained differences from exceptions still requiring investigation.
+- [The file arrived. Is it ready to use?](https://www.advanexus.com/use-cases/business-problems/data-modernization/): Check partner data against the expected structure and quality rules. Prepare usable data for analysis or transfer, and identify what needs correction.
+- [The transfer finished. Was it correct?](https://www.advanexus.com/use-cases/business-problems/controlled-data-migration/): Compare source and destination against the agreed mapping. Review record and value differences before accepting the transferred data.
 
 ## Core use cases
 
@@ -29,6 +29,17 @@ Progress that stays connected. advanexus brings advance and nexus together: movi
 - Analytics and AI assistance with a human decision: A versioned input is reused in reporting or controlled Python analysis; AI assistance finds only permitted context and prepares an explanation or suggestion, a person confirms the action, and commentary remains with the object. Business outcome: A repeatable insight with less context search and a clear distinction between an AI suggestion and an executed action.
 - Recovery confirmed with business data: Copy, controlled deletion, waiting, restoration and the final business check become one visible procedure. Business outcome: Less downtime and a decision to reopen based on validated data, not only a green technical status.
 - Audit, regulatory request or investigation: From the question, Assurance Center leads to the relevant result or execution, its linked version, check, owner and outcome, and then to a review or bounded evidence package. Business outcome: A faster first trusted answer with fewer rounds of follow-up and a known evidence boundary.
+
+## Connected outcome paths
+
+- Start with the result the organisation needs—not a module name.
+- Each path below connects the business need to an accepted input, controlled action, accountable owner and evidence that can be reviewed later.
+- [Move and reconcile information](https://www.advanexus.com/product/data-operations/): Move supported data between existing systems, apply explicit checks and retain the result needed to accept or investigate the transfer.
+- [Stop avoidable errors before delivery](https://www.advanexus.com/product/data-quality/): Put agreed checks in the operating path so a critical error can block acceptance and a warning remains attached to the exact execution.
+- [Produce a result people can repeat](https://www.advanexus.com/product/controlled-analytics/): Bind a report, dashboard or analysis to an accepted data contract and keep the exact version and execution context behind the delivered result.
+- [Investigate without rebuilding the story](https://www.advanexus.com/product/assurance/): Move from an outcome or exception to the permitted versions, runs, owners, findings and supporting records behind it.
+- [Extend analysis without losing context](https://www.advanexus.com/product/anpy/): Continue in Python when deeper work is needed while preserving the project, input, environment, execution and bounded result.
+- [Let AI accelerate work without taking authority](https://www.advanexus.com/product/intelligence/): Intelligence can explain or propose within the current user's scope; deterministic services, policy and people remain responsible for state-changing action.
 
 ## Best fit and value unit
 
@@ -43,6 +54,7 @@ Progress that stays connected. advanexus brings advance and nexus together: movi
 ## Category and differentiation
 
 - advanexus is not trying to be the deepest warehouse, orchestrator, catalogue, observability product, BI suite or AI model.
+- Its value is the shared control and evidence path when one business outcome crosses several of them.
 - Choose advanexus when speed across systems must not break control, accountability or proof.
 - Broad enterprise platforms can replace or consolidate more of the stack; deep specialists can be stronger in one layer. advanexus is the focused choice when the organisation wants to keep capable systems, control a critical cross-system process or migration and preserve one evidence chain from context and authority to outcome and recovery. The advantage is continuity across boundaries—not a claim to be deepest in every specialist category.
 - Systems of record and operational applications: A connected control record when execution moves between systems.
@@ -77,6 +89,129 @@ Progress that stays connected. advanexus brings advance and nexus together: movi
 - Does a deployment become production-ready automatically? No. Production sign-off requires the exact revision, immutable images, target infrastructure and recorded migration, authorisation, recovery, storage, connector and operational acceptance.
 - How does pricing work? All platform modules, including Intelligence. Capacity and environments according to the agreed profile. Product support according to the agreed profile. Excludes VAT. Outside the licence: Cloud, infrastructure preparation and operation, implementation, custom development, integrator services and external provider consumption.
 - How should an organisation start? Choose one process, migration, report, recovery or AI-assisted action whose result matters. Define its systems, owners, rules, approvals, failure path, evidence obligation and pilot measures before discussing a broad rollout. Existing users can continue through Open demo.
+
+## From support for development to verified infrastructure.
+
+- AWS: Support for platform development and the establishment of scalable infrastructure.
+- Mainstream: Expertise in the design, implementation and technical verification of AWS infrastructure.
+
+Sources: [Existing systems. Less manual work between them.](https://www.advanexus.com/#infrastructure-support) · [Trust is a product behaviour, not a badge.](https://www.advanexus.com/trust/#infrastructure-support)
+
+## Industry contexts
+
+### [Bring readings and billing into agreement.](https://www.advanexus.com/use-cases/industries/energy/)
+
+- [How advanexus helps](https://www.advanexus.com/use-cases/industries/energy/#section-1-title): Compare readings, periods and billed quantities using agreed rules and identify exceptions for review.
+  - [Meter extracts contain missing intervals or readings.](https://www.advanexus.com/use-cases/business-problems/trusted-bi-ai-inputs/): Compare meter identifiers, time intervals and units. Find missing readings and inconsistent coverage before preparing the calculation.
+  - [Contract periods and billed quantities do not align.](https://www.advanexus.com/use-cases/business-problems/evidence-backed-investigation/): Connect contract dates, readings and billed quantities. Review differences for the same period and unit.
+  - [Two forecasts use different input versions.](https://www.advanexus.com/use-cases/business-problems/governed-analytics-delivery/): Compare the saved input versions, periods and assumptions used by each forecast. Establish what changed before interpreting the result.
+- [What your team gains](https://www.advanexus.com/use-cases/industries/energy/#section-2-title): Give operations and finance a shared basis for checking differences.
+- [Try it with your own process](https://www.advanexus.com/use-cases/industries/energy/#section-3-title): Compare one agreed billing period or reporting sample. Measure missing intervals, differences and preparation time. Metering and billing rules remain your responsibility.
+- [Keep the next cycle connected.](https://www.advanexus.com/use-cases/industries/energy/#section-4-title): Reuse the same period, unit and completeness checks for the next billing cycle. Retain the chosen input and result versions for an explainable comparison.
+
+### [Know why the numbers do not match.](https://www.advanexus.com/use-cases/industries/financial-services/)
+
+- [How advanexus helps](https://www.advanexus.com/use-cases/industries/financial-services/#section-1-title): Connect reporting inputs, check differences and trace a figure back to its source and the report version used.
+  - [Payments recorded. Settlement still needs reconciling.](https://www.advanexus.com/use-cases/business-problems/evidence-backed-investigation/): Compare the payment, ledger entry and settlement reference. See which stages agree and which still need confirmation.
+  - [The report depends on last-minute corrections.](https://www.advanexus.com/use-cases/business-problems/regulatory-reporting/): Compare the prepared report with control data and the general ledger. Review the individual records behind each difference.
+  - [Different teams submit different figures for the same period.](https://www.advanexus.com/use-cases/business-problems/governed-analytics-delivery/): Check the reporting period, filters and data version together. Distinguish changed inputs from a changed calculation.
+- [What your team gains](https://www.advanexus.com/use-cases/industries/financial-services/#section-2-title): A shared basis for reviewing exceptions and explaining a reported number.
+- [Try it with your own process](https://www.advanexus.com/use-cases/industries/financial-services/#section-3-title): Compare one settlement or reporting cycle. Measure review time, unresolved differences and repeat submissions. Financial decisions stay with your team.
+- [Keep the next cycle connected.](https://www.advanexus.com/use-cases/industries/financial-services/#section-4-title): Reuse the agreed source connections and checks for the next reporting period. Preserve each selected result version so finance can explain what changed without rebuilding the preparation.
+
+### [See the whole claim, not separate fragments.](https://www.advanexus.com/use-cases/industries/insurance/)
+
+- [How advanexus helps](https://www.advanexus.com/use-cases/industries/insurance/#section-1-title): Bring the data together, check missing links and compare claims and payments using agreed definitions.
+  - [A claim waits for missing policy or payment data.](https://www.advanexus.com/use-cases/business-problems/evidence-backed-investigation/): Link the claim to its policy, coverage period and payment records. Identify missing references before the next review.
+  - [Partner statements and commissions do not match.](https://www.advanexus.com/use-cases/business-problems/evidence-backed-investigation/): Compare partner references, commission calculations and recorded payments. Separate unmatched entries from amount differences.
+  - [A review needs the exact inputs behind a previous result.](https://www.advanexus.com/use-cases/business-problems/audit-ready-data-operations/): Open the saved input and report versions with the available execution records. Review the basis of the earlier result.
+- [What your team gains](https://www.advanexus.com/use-cases/industries/insurance/#section-2-title): A clearer view of which records need attention and what needs checking next.
+- [Try it with your own process](https://www.advanexus.com/use-cases/industries/insurance/#section-3-title): Check one authorised claim or settlement sample. Measure missing references, follow-up requests and preparation time. Coverage decisions remain with qualified staff.
+- [Keep the next cycle connected.](https://www.advanexus.com/use-cases/industries/insurance/#section-4-title): Reuse the agreed links and checks for the next claims or settlement batch. Keep the result version and unresolved cases available to the people responsible for review.
+
+### [Find what is holding up a delivery.](https://www.advanexus.com/use-cases/industries/logistics-supply-chain/)
+
+- [How advanexus helps](https://www.advanexus.com/use-cases/industries/logistics-supply-chain/#section-1-title): Connect the shipment information and highlight delays, missing documents and differences between recorded statuses.
+  - [A shipment has different statuses across systems.](https://www.advanexus.com/use-cases/business-problems/evidence-backed-investigation/): Follow the same shipment reference through transport and warehouse records. See where the recorded statuses stop agreeing.
+  - [Delivery is recorded, but confirmation is missing.](https://www.advanexus.com/use-cases/business-problems/audit-ready-data-operations/): Compare deliveries with their receipt confirmations. Identify the shipments that still lack the required document.
+  - [An invoice and its recorded payments need comparing.](https://www.advanexus.com/use-cases/business-problems/evidence-backed-investigation/): Connect the shipment, invoice and payment references. Review missing records and amount differences without reassembling separate extracts.
+- [What your team gains](https://www.advanexus.com/use-cases/industries/logistics-supply-chain/#section-2-title): One view for deciding what to investigate, without guessing the cause of a delay.
+- [Try it with your own process](https://www.advanexus.com/use-cases/industries/logistics-supply-chain/#section-3-title): Check one shipment across available sources. Measure missing confirmations and investigation time. A status does not prove the cause of a delay.
+- [Keep the next cycle connected.](https://www.advanexus.com/use-cases/industries/logistics-supply-chain/#section-4-title): Repeat the shipment review with new operational records. Reuse the preparation and checks, while keeping missing confirmations and the result of each execution visible.
+
+### [Bring departmental information into one review.](https://www.advanexus.com/use-cases/industries/public-sector/)
+
+- [How advanexus helps](https://www.advanexus.com/use-cases/industries/public-sector/#section-1-title): Combine authorised data, check completeness and keep the source and version behind each result visible.
+  - [A digital request still requires manual data collection.](https://www.advanexus.com/use-cases/business-problems/evidence-backed-investigation/): Connect the request, departmental records and required attachments. Separate complete cases from those awaiting information.
+  - [Departments use different versions of the same extract.](https://www.advanexus.com/use-cases/business-problems/governed-analytics-delivery/): Compare the period, extract version and included records. Make disagreements visible before combining departmental totals.
+  - [A completed migration still awaits business acceptance.](https://www.advanexus.com/use-cases/business-problems/controlled-data-migration/): Compare agreed identifiers, counts and values before accepting a move. Keep unresolved differences available for review.
+- [What your team gains](https://www.advanexus.com/use-cases/industries/public-sector/#section-2-title): A repeatable review process with clear access and traceable reporting inputs.
+- [Try it with your own process](https://www.advanexus.com/use-cases/industries/public-sector/#section-3-title): Review one authorised exchange or migration sample. Measure missing fields, repeated submissions and acceptance time. Legal authority must be established separately.
+- [Keep the next cycle connected.](https://www.advanexus.com/use-cases/industries/public-sector/#section-4-title): Reuse the agreed submission structure and checks across reporting periods. Keep source versions and unresolved cases connected to the submitted result.
+
+### [Follow the order through to the bill.](https://www.advanexus.com/use-cases/industries/telecommunications/)
+
+- [How advanexus helps](https://www.advanexus.com/use-cases/industries/telecommunications/#section-1-title): Connect order, activation and billing records to find differences and the information needed to resolve them.
+  - [An order exists, but activation is not confirmed.](https://www.advanexus.com/use-cases/business-problems/evidence-backed-investigation/): Link the order and contract to the activation record. Find orders with no confirmed completion.
+  - [Activation and billing show different service states.](https://www.advanexus.com/use-cases/business-problems/evidence-backed-investigation/): Compare activation dates, service periods and billing records. Identify entries that need an operational or financial review.
+  - [An upstream format change disrupts a downstream report.](https://www.advanexus.com/use-cases/business-problems/trusted-bi-ai-inputs/): Check incoming columns and required fields against the expected structure. Identify changes before the next processing step.
+- [What your team gains](https://www.advanexus.com/use-cases/industries/telecommunications/#section-2-title): Review missed activations and billing discrepancies with the relevant teams.
+- [Try it with your own process](https://www.advanexus.com/use-cases/industries/telecommunications/#section-3-title): Follow one order through activation and billing. Measure unmatched references and review time. Operational changes remain in the authorised source systems.
+- [Keep the next cycle connected.](https://www.advanexus.com/use-cases/industries/telecommunications/#section-4-title): Repeat the order-to-billing comparison with new records. Keep the agreed rules and execution results together so teams can review changes without rebuilding the comparison.
+
+## Business problem walkthroughs
+
+### [Answer a review without rebuilding the story.](https://www.advanexus.com/use-cases/business-problems/audit-ready-data-operations/)
+
+- [How advanexus helps](https://www.advanexus.com/use-cases/business-problems/audit-ready-data-operations/#section-1-title): Follow recorded work to the available inputs, checks, results and responsible people. Keep missing evidence visible rather than filling gaps with assumptions.
+- [What your team gains](https://www.advanexus.com/use-cases/business-problems/audit-ready-data-operations/#section-2-title): Connect recorded actions, results and available evidence for operational oversight and subsequent review.
+- [Try it with your own process](https://www.advanexus.com/use-cases/business-problems/audit-ready-data-operations/#section-3-title): Reconstruct one recorded result. Measure retrieval time and missing evidence. Technical records are not legal certification or a complete record of external activity.
+- [Keep the next cycle connected.](https://www.advanexus.com/use-cases/business-problems/audit-ready-data-operations/#section-4-title): Keep the recorded result, its references and the review scope together. A later request can start from the same evidence instead of another search through exported files.
+
+### [Check the move, not just the transfer status.](https://www.advanexus.com/use-cases/business-problems/controlled-data-migration/)
+
+- [How advanexus helps](https://www.advanexus.com/use-cases/business-problems/controlled-data-migration/#section-1-title): Agree on the comparison, transfer supported data and inspect differences between source and target before accepting the move.
+- [What your team gains](https://www.advanexus.com/use-cases/business-problems/controlled-data-migration/#section-2-title): Turn data preparation, processing and transfer into repeatable workflows with checks and execution tracking.
+- [Try it with your own process](https://www.advanexus.com/use-cases/business-problems/controlled-data-migration/#section-3-title): Agree on records, counts and comparison rules. Review differences and record acceptance. Connector support and recovery procedures must be checked for the actual move.
+- [Keep the next cycle connected.](https://www.advanexus.com/use-cases/business-problems/controlled-data-migration/#section-4-title): Repeat the agreed mapping and comparison on the next batch or rehearsal. Review newly observed differences before accepting that execution.
+
+### [Move data without losing sight of the result.](https://www.advanexus.com/use-cases/business-problems/data-modernization/)
+
+- [How advanexus helps](https://www.advanexus.com/use-cases/business-problems/data-modernization/#section-1-title): Prepare transfers, compare source and target results and review exceptions before accepting the move.
+  - [Source and destination totals need reconciling.](https://www.advanexus.com/use-cases/business-problems/controlled-data-migration/): Compare source and destination using agreed keys, counts and totals. Review unmatched records as well as aggregate differences.
+  - [A schema change leaves fields without a mapping.](https://www.advanexus.com/use-cases/business-problems/trusted-bi-ai-inputs/): Compare the observed structure with the transfer mapping. Identify fields that have no agreed destination.
+  - [Technical completion is not business acceptance.](https://www.advanexus.com/use-cases/business-problems/audit-ready-data-operations/): Bring the comparison, exceptions and execution records into one review. Accept the checked scope, not merely the transfer status.
+- [What your team gains](https://www.advanexus.com/use-cases/business-problems/data-modernization/#section-2-title): A phased transition with explicit checks, rather than a transfer assumed to be successful.
+- [Try it with your own process](https://www.advanexus.com/use-cases/business-problems/data-modernization/#section-3-title): Compare an agreed source and target sample. Measure unmatched records and repeated checks. Accept only the tested scope; a successful transfer is not sufficient.
+- [Keep the next cycle connected.](https://www.advanexus.com/use-cases/business-problems/data-modernization/#section-4-title): Reuse the accepted mapping and comparison rules in the next rehearsal or batch. Record new differences rather than assuming that a previous successful run proves the next one.
+
+### [Find the answer without searching every system.](https://www.advanexus.com/use-cases/business-problems/evidence-backed-investigation/)
+
+- [How advanexus helps](https://www.advanexus.com/use-cases/business-problems/evidence-backed-investigation/#section-1-title): Bring permitted information together, identify its sources and separate confirmed findings from unknowns. Use the available evidence to decide what to check next.
+- [What your team gains](https://www.advanexus.com/use-cases/business-problems/evidence-backed-investigation/#section-2-title): Get a shared view of information without manually searching and combining data from several applications.
+- [Try it with your own process](https://www.advanexus.com/use-cases/business-problems/evidence-backed-investigation/#section-3-title): Investigate one exception using permitted records. Measure preparation time and missing information. Separate confirmed facts from causes that still need checking.
+- [Keep the next cycle connected.](https://www.advanexus.com/use-cases/business-problems/evidence-backed-investigation/#section-4-title): Preserve the selected records and available result references. The next reviewer can continue from established findings and unresolved questions instead of restarting the investigation.
+
+### [Explain why a result changed.](https://www.advanexus.com/use-cases/business-problems/governed-analytics-delivery/)
+
+- [How advanexus helps](https://www.advanexus.com/use-cases/business-problems/governed-analytics-delivery/#section-1-title): Keep the chosen data and report versions connected to the recorded result. Compare changes and investigate differences before using the numbers.
+- [What your team gains](https://www.advanexus.com/use-cases/business-problems/governed-analytics-delivery/#section-2-title): Connect the numbers to the data behind them and investigate what needs attention.
+- [Try it with your own process](https://www.advanexus.com/use-cases/business-problems/governed-analytics-delivery/#section-3-title): Compare the data version, report definition and filters for one result. Measure time to explain the difference. Version history is not automatically a snapshot of source rows.
+- [Keep the next cycle connected.](https://www.advanexus.com/use-cases/business-problems/governed-analytics-delivery/#section-4-title): Keep the report definition, filters and chosen data version with each recorded result. Revisit the earlier basis before interpreting a new total.
+
+### [Check the inputs before the report goes out.](https://www.advanexus.com/use-cases/business-problems/regulatory-reporting/)
+
+- [How advanexus helps](https://www.advanexus.com/use-cases/business-problems/regulatory-reporting/#section-1-title): Prepare data from approved sources, apply agreed checks and link the result to the definitions used. Review exceptions before the next reporting step.
+- [What your team gains](https://www.advanexus.com/use-cases/business-problems/regulatory-reporting/#section-2-title): A reviewed reporting dataset, differences linked to individual records and a selected report version that the team can explain before submission.
+- [Try it with your own process](https://www.advanexus.com/use-cases/business-problems/regulatory-reporting/#section-3-title): Compare one reporting period. Measure corrections, repeat submissions and time to acceptance. Your specialists approve reporting definitions and obligations.
+- [Keep the next cycle connected.](https://www.advanexus.com/use-cases/business-problems/regulatory-reporting/#section-4-title): Reuse the approved preparation and checks for the next period. Keep corrections and selected result versions distinguishable so the team can explain the submitted figures.
+
+### [Give reports and AI a reliable starting point.](https://www.advanexus.com/use-cases/business-problems/trusted-bi-ai-inputs/)
+
+- [How advanexus helps](https://www.advanexus.com/use-cases/business-problems/trusted-bi-ai-inputs/#section-1-title): Prepare reusable data, check it and choose the version to share. Give people and supported tools access only to what they are allowed to use.
+- [What your team gains](https://www.advanexus.com/use-cases/business-problems/trusted-bi-ai-inputs/#section-2-title): One prepared data version with known fields and checks, reusable in permitted reports and AI tools instead of preparing separate extracts for reports and AI tools.
+- [Try it with your own process](https://www.advanexus.com/use-cases/business-problems/trusted-bi-ai-inputs/#section-3-title): Use one approved question and data version. Check allowed fields, denied access and recorded calls. Do not assume the external assistant's full conversation is captured.
+- [Keep the next cycle connected.](https://www.advanexus.com/use-cases/business-problems/trusted-bi-ai-inputs/#section-4-title): Reuse the selected data version in permitted reports and AI-assisted work. When inputs change, make a new version available without silently replacing the earlier result.
 
 ## Authoritative public pages
 
